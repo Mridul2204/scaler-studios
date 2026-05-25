@@ -84,7 +84,7 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/admin-change-marshall" element={<AdminPanel />} />
+        <Route path="/admin-scalerstudios" element={<AdminPanel />} />
         <Route path="*" element={<SiteShell />} />
       </Routes>
     </Router>

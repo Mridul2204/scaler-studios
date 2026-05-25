@@ -8,7 +8,7 @@ const articles = [
     body: [
       'When Stefan Soloviev stepped into his new role as head of the Soloviev Group, he made a commitment to giving back to the communities that have supported the organization\'s growth for decades.',
       'Under his leadership, the Soloviev Foundation has expanded its philanthropic reach, funding education initiatives, community development programs, and environmental conservation efforts across the country.',
-      'Marshall worked closely with the Soloviev team to craft a narrative that authentically communicates this commitment — one rooted in action, not just aspiration. The resulting campaign highlights real stories of impact.',
+      'Scaler Studios worked closely with the Soloviev team to craft a narrative that authentically communicates this commitment — one rooted in action, not just aspiration. The resulting campaign highlights real stories of impact.',
       'The work has resonated deeply with stakeholders and community members alike, reinforcing the idea that legacy is built not just through buildings, but through the lives they touch.',
     ],
   },
@@ -19,7 +19,7 @@ const articles = [
     category: 'Press',
     type: 'news',
     body: [
-      '2024 was a year of growth, enormous creativity, and partnership for Marshall. We welcomed a remarkable roster of new clients who share our belief that bold brands change the world.',
+      '2024 was a year of growth, enormous creativity, and partnership for Scaler Studios. We welcomed a remarkable roster of new clients who share our belief that bold brands change the world.',
       'From luxury hospitality to urban placemaking, each new partnership has challenged us to push further — to think bigger and create work that truly moves markets.',
       'Among the highlights: launching a new brand identity for a landmark development, producing a global campaign for one of the world\'s most prestigious hotel groups, and helping redefine how an iconic American city tells its story.',
       'As we look ahead, we\'re energized by the work on our horizon and grateful for the trust our clients place in us to help build what comes next.',
@@ -32,7 +32,7 @@ const articles = [
     category: 'Press',
     type: 'news',
     body: [
-      'The new season brings new rhythms and rituals, and at Marshall, it also brings a fresh wave of exciting new projects that push our creative boundaries.',
+      'The new season brings new rhythms and rituals, and at Scaler Studios, it also brings a fresh wave of exciting new projects that push our creative boundaries.',
       'This quarter, we\'ve been deep in the work of transformation — helping brands evolve, places come alive, and stories find their audience.',
       'From a groundbreaking residential tower to a cultural institution reimagining its public presence, the projects on our desk remind us why we do what we do.',
       'Each one is a chance to build something meaningful — something that lasts beyond the campaign and becomes part of the cultural fabric.',
@@ -84,7 +84,7 @@ const articles = [
     category: 'Press',
     type: 'news',
     body: [
-      'People are our greatest assets, the engines that power our creativity. At Marshall, we believe that AI is a powerful tool — but only when it amplifies human insight, not replaces it.',
+      'People are our greatest assets, the engines that power our creativity. At Scaler Studios, we believe that AI is a powerful tool — but only when it amplifies human insight, not replaces it.',
       'In this piece, we explore how our team integrates AI into the creative process while keeping the human touch at the center of everything we do.',
       'From research and strategy to design and copywriting, AI helps us work smarter and faster. But the ideas, the empathy, the cultural intuition — that\'s all human.',
       'We\'re excited about the future of AI in branding, but we\'re even more excited about the future of the humans who wield it.',
@@ -111,7 +111,7 @@ const articles = [
     type: 'news',
     body: [
       'Graphic Design USA has featured our work building the brand experience for Moynihan Train Hall, one of New York City\'s most significant civic projects in a generation.',
-      'The Moynihan Train Hall transformed the historic James A. Farley Post Office into a world-class transit hub, and Marshall was tapped to create a brand identity worthy of the architecture.',
+      'The Moynihan Train Hall transformed the historic James A. Farley Post Office into a world-class transit hub, and Scaler Studios was tapped to create a brand identity worthy of the architecture.',
       'Our design system draws on the building\'s Beaux-Arts grandeur while incorporating modern wayfinding and digital touchpoints that serve millions of travelers.',
       'Being recognized by GDUSA is an honor that reflects the collaborative effort of our entire team and our partners at Empire State Development.',
     ],
@@ -131,7 +131,7 @@ const articles = [
   },
   {
     slug: '10_year_party',
-    title: '10 Years of Marshall Celebrated in Style',
+    title: '10 Years of Scaler Studios Celebrated in Style',
     excerpt: 'We kicked off summer with our 10 year anniversary extravaganza.',
     category: 'Past Event',
     type: 'event',
@@ -144,8 +144,8 @@ const articles = [
   },
   {
     slug: 'drink_and_draw',
-    title: 'Marshall x This Place Drink & Draw Rooftop Series',
-    excerpt: 'Marshall collaborated with This Place for live figure drawing sessions.',
+    title: 'Scaler Studios x This Place Drink & Draw Rooftop Series',
+    excerpt: 'Scaler Studios collaborated with This Place for live figure drawing sessions.',
     category: 'Past Event',
     type: 'event',
     body: [
@@ -157,7 +157,7 @@ const articles = [
   },
   {
     slug: 'rooftop_sessions',
-    title: 'Marshall Presents Rooftop Summer Sessions',
+    title: 'Scaler Studios Presents Rooftop Summer Sessions',
     excerpt: 'Experimental harpist Mary Lattimore performed at our rooftop garden.',
     category: 'Past Event',
     type: 'event',
@@ -170,8 +170,8 @@ const articles = [
   },
   {
     slug: 'art_start',
-    title: 'Marshall Announces Industry Partnership with Art Start',
-    excerpt: 'Marshall partners with Art Start to support underserved young artists.',
+    title: 'Scaler Studios Announces Industry Partnership with Art Start',
+    excerpt: 'Scaler Studios partners with Art Start to support underserved young artists.',
     category: 'Past Event',
     type: 'event',
     body: [

@@ -921,7 +921,7 @@ export default function AdminPanel() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `marshall-cms-export-${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = `scaler-cms-export-${new Date().toISOString().slice(0, 10)}.json`;
       a.click();
       URL.revokeObjectURL(url);
       showToast("Export downloaded!");
@@ -1035,9 +1035,9 @@ export default function AdminPanel() {
       {/* ─── Sidebar ─── */}
       <aside className={styles.sidebar}>
         <div className={styles.brand}>
-          <div className={styles.brandIcon}>M</div>
+          <div className={styles.brandIcon}>S</div>
           <div className={styles.brandText}>
-            <span className={styles.brandName}>Marshall</span>
+            <span className={styles.brandName}>Scaler Studios</span>
             <span className={styles.brandSub}>Content Manager</span>
           </div>
         </div>

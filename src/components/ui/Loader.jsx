@@ -72,7 +72,7 @@ export default function Loader() {
       >
         <img
           src="/logonewlong.png"
-          alt="Marshall Haber Creative Group"
+          alt="Scaler Studios"
           style={{ height: "clamp(40px, 8vw, 100px)", width: "auto" }}
         />
       </motion.div>

@@ -81,7 +81,7 @@ export default function Clients() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.7 }}
                 >
-                    For over 20 years, companies across finance, real estate, technology, family office, entertainment, and nonprofit sectors have trusted MHCG to help bring complex ideas to market.
+                    Companies across tech, e-commerce, SaaS, and consumer brands trust Scaler Studios to create performance-driven creative that fuels real growth.
                 </motion.p>
                 <motion.p
                     className={styles.heroSub}

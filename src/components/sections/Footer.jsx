@@ -77,7 +77,7 @@ export default function Footer() {
       </div>
 
       <div className="w-full flex justify-center items-center mb-12 md:mb-6 mt-16 md:mt-0">
-        <img src={logoSrc} alt="Marshall Haber Creative Group" className="h-[12vw] md:h-[6vw] lg:h-[5.5vw] xl:h-[7vw] w-auto" style={{ filter: logoFilter }} />
+        <img src={logoSrc} alt="Scaler Studios" className="h-[12vw] md:h-[6vw] lg:h-[5.5vw] xl:h-[7vw] w-auto" style={{ filter: logoFilter }} />
       </div>
 
       {/* Bottom Legal Links */}

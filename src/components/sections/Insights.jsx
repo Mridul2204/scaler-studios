@@ -58,17 +58,17 @@ export default function Insights() {
     };
   });
 
-  // Section has a static cream bg; all text/borders stay dark for readability.
-  const textColor = "#020817";
-  const mutedColor = "#020817";
-  const borderColor = "rgba(2,8,23,0.1)";
-  const buttonBorder = "#020817";
+  // Section has a static light bg; all text/borders stay dark for readability.
+  const textColor = "#073624";
+  const mutedColor = "#073624";
+  const borderColor = "rgba(7,54,36,0.1)";
+  const buttonBorder = "#073624";
   const logoFilter = "brightness(0) grayscale(1)";
 
   return (
     <motion.div
       ref={sectionRef}
-      style={{ backgroundColor: "#fbf0f2" }}
+      style={{ backgroundColor: "#F4F6F5" }}
       className="w-full relative"
     >
       <div className="px-6 md:px-12 pt-8 md:pt-14 pb-8 md:pb-12 w-full">
@@ -146,9 +146,9 @@ export default function Insights() {
                         inset: 0,
                         padding: "clamp(24px, 4vw, 48px)",
                         color:
-                          card.bg === "#2B59C3" || card.bg === "#0B0215"
-                            ? "#fbf0f2"
-                            : "#020817",
+                          card.bg === "#073624" || card.bg === "#0E2E2D" || card.bg === "#0A2629"
+                            ? "#FFFFFF"
+                            : "#073624",
                       }}
                     >
                       <p className="text-[10px] font-bold uppercase tracking-[0.18em] mb-6 opacity-50">

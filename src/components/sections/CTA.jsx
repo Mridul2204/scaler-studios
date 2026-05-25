@@ -11,7 +11,7 @@ export default function CTA() {
   const right = getContent(sections, "cta.right", defaults.home.cta.right);
 
   return (
-    <section className="w-full px-6 pt-20 pb-20 bg-[#020817] text-[#fbf0f2]">
+    <section className="w-full px-6 pt-20 pb-20 bg-[#073624] text-white">
       {/* Top CTA Cards */}
       <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-12">
         {/* Left Card */}

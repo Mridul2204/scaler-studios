@@ -8,8 +8,8 @@ export default function Footer() {
   const { pathname } = useLocation();
   const isCreamPage = pathname !== "/";
 
-  const bgClass = isCreamPage ? "bg-[#fbf0f2] text-[#020817]" : "bg-[#020817] text-[#fbf0f2]";
-  const borderClass = isCreamPage ? "border-[#020817]/20" : "border-[#fbf0f2]/20";
+  const bgClass = isCreamPage ? "bg-[#cefad0] text-[#073624]" : "bg-[#0E2E2D] text-white";
+  const borderClass = isCreamPage ? "border-[#073624]/20" : "border-white/20";
   const logoSrc = "/logonewlong.png";
   const logoFilter = isCreamPage ? "invert(1) brightness(0)" : "none";
 

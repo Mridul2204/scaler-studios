@@ -102,8 +102,8 @@ export default function WorkDetail() {
   const project = projects.find((p) => p.slug === slug);
 
   useLayoutEffect(() => {
-    document.body.style.backgroundColor = "#fbf0f2";
-    document.body.style.color = "#020817";
+    document.body.style.backgroundColor = "#cefad0";
+    document.body.style.color = "#073624";
     return () => {
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
@@ -188,7 +188,7 @@ export default function WorkDetail() {
                         letterSpacing: '-0.02em',
                         lineHeight: 1.2,
                         margin: '2.5rem 0 0.75rem',
-                        color: '#020817',
+                        color: '#073624',
                       }}>{renderInline(block.text)}</h2>
                     );
                   case 'paragraph':

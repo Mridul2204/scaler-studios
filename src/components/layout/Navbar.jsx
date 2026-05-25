@@ -387,6 +387,8 @@ export default function Navbar() {
       const computedBg = typeof window !== "undefined" ? window.getComputedStyle(document.body).backgroundColor : "";
       
       const lightBackgrounds = [
+        "rgb(206, 250, 208)", "#cefad0", "#CEFAD0",
+        "rgb(244, 246, 245)", "#F4F6F5", "#f4f6f5",
         "rgb(251, 240, 242)", "#FBF0F2", "#fbf0f2",
         "rgb(244, 237, 217)", "#F4EDD9", "#f4edd9",
         "rgb(244, 240, 234)", "#F4F0EA", "#f4f0ea",
@@ -447,11 +449,11 @@ export default function Navbar() {
             />
             <img
               src="/logo.png"
-              alt="MHCG"
+              alt="Scaler Studios"
               className="absolute left-0 top-0 h-6 w-auto cursor-pointer transition-all duration-700 ease-in-out"
               style={{
                 opacity: showCenterLogo ? 1 : 0,
-                filter: isLightBg ? "brightness(0)" : "invert(1)",
+                filter: isLightBg ? "brightness(0)" : "none",
               }}
             />
           </div>
@@ -490,11 +492,11 @@ export default function Navbar() {
             />
             <img
               src="/logo.png"
-              alt="MHCG"
+              alt="Scaler Studios"
               className="absolute h-16 w-auto cursor-pointer transition-all duration-700 ease-in-out"
               style={{
                 opacity: showCenterLogo ? 1 : 0,
-                filter: isLightBg ? "brightness(0)" : "invert(1)",
+                filter: isLightBg ? "brightness(0)" : "none",
               }}
             />
           </div>
@@ -523,13 +525,13 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-[#020817] z-[200] pointer-events-auto flex flex-col justify-between px-6 py-8 md:hidden text-[#fbf0f2]"
+            className="fixed inset-0 bg-[#073624] z-[200] pointer-events-auto flex flex-col justify-between px-6 py-8 md:hidden text-white"
           >
             <div className="flex justify-between items-center">
               <img src="/logonewlong.png" className="h-6" />
               <button
                 onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}
-                className="w-10 h-10 rounded-full bg-[#fbf0f2] text-[#020817] flex items-center justify-center cursor-pointer border border-white/20"
+                className="w-10 h-10 rounded-full bg-[#1DBF73] text-[#073624] flex items-center justify-center cursor-pointer border border-white/20"
               >
                 ✕
               </button>

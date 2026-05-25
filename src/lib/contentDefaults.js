@@ -226,7 +226,7 @@ export const defaults = {
       subtext: "From a single edit to full campaign production, we help teams create more, faster, without losing the craft.",
     },
     list: [
-      { name: "J.P. Morgan", logo: "https://marshallhaber.com/wp-content/uploads/2019/10/jpmorgan.png", category: "Finance", logoSize: "100", showOnHome: true },
+      { name: "Weizmann Institute of Science", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/logos/weizmann-institute.png", category: "Education", logoSize: "160", showOnHome: true },
       { name: "Hotel on Rivington", logo: "https://marshallhaber.com/wp-content/uploads/2019/10/rivington.png", category: "Hospitality", logoSize: "100", showOnHome: true },
       { name: "Centerbridge", logo: "https://marshallhaber.com/wp-content/uploads/2020/10/centerbridge.png", category: "Finance", logoSize: "100", showOnHome: true },
       { name: "Trish McEvoy", logo: "https://marshallhaber.com/wp-content/uploads/2021/05/trishmcevoy-1.png", category: "Beauty", logoSize: "100", showOnHome: true },

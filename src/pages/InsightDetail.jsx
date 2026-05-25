@@ -121,8 +121,8 @@ export default function InsightDetail() {
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
-    document.body.style.backgroundColor = "#fbf0f2";
-    document.body.style.color = "#020817";
+    document.body.style.backgroundColor = "#cefad0";
+    document.body.style.color = "#073624";
     return () => {
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
@@ -131,7 +131,7 @@ export default function InsightDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen pt-32 px-6 flex items-center justify-center" style={{ backgroundColor: "#fbf0f2" }}>
+      <div className="min-h-screen pt-32 px-6 flex items-center justify-center" style={{ backgroundColor: "#cefad0" }}>
         Loading...
       </div>
     );
@@ -139,7 +139,7 @@ export default function InsightDetail() {
 
   if (!article) {
     return (
-      <div className="min-h-screen pt-32 px-6 flex flex-col items-center" style={{ backgroundColor: "#fbf0f2" }}>
+      <div className="min-h-screen pt-32 px-6 flex flex-col items-center" style={{ backgroundColor: "#cefad0" }}>
         <h1 className="text-4xl font-bold mb-4" style={{ fontFamily: "'PP Mori', sans-serif" }}>Article Not Found</h1>
         <Link to="/" className="underline font-semibold mt-4">Return to Home</Link>
       </div>
@@ -218,7 +218,7 @@ export default function InsightDetail() {
                         letterSpacing: '-0.02em',
                         lineHeight: 1.2,
                         margin: '2.5rem 0 0.75rem',
-                        color: '#020817',
+                        color: '#073624',
                       }}
                     >
                       {renderInline(block.text)}

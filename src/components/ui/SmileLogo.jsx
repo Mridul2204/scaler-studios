@@ -25,10 +25,10 @@ export default function SmileLogo() {
           y="95"
           textAnchor="middle"
           fill="rgba(0,0,0,0.12)"
-          style={{ 
-            fontSize: "74px", 
-            fontWeight: "900", 
-            fontFamily: "'PP Mori', sans-serif", 
+          style={{
+            fontSize: "74px",
+            fontWeight: "900",
+            fontFamily: "'PP Mori', sans-serif",
             letterSpacing: "-0.08em",
             filter: "url(#pressed)"
           }}

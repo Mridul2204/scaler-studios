@@ -2,7 +2,7 @@
 .page {
   width: 100%;
   min-height: 100vh;
-  background-color: #fbf0f2;
+  background-color: #cefad0;
   color: #111111;
 }
 
@@ -281,7 +281,7 @@
 .programs {
   width: 100%;
   padding: 6rem clamp(1.25rem, 4vw, 4rem) 7rem;
-  background-color: #fbf0f2;
+  background-color: #cefad0;
 }
 
 .programsHeading {

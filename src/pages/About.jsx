@@ -35,7 +35,7 @@ export default function About() {
   const ctaReview = getContent(homeSections, "cta.right", defaults.home.cta.right);
 
   useEffect(() => {
-    document.body.style.backgroundColor = '#fbf0f2';
+    document.body.style.backgroundColor = '#cefad0';
     document.body.style.color = '#111111';
     return () => {
       document.body.style.backgroundColor = '';

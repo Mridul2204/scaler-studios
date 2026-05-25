@@ -41,7 +41,7 @@ export default function Works() {
   }, [cmsRawProjects]);
 
   return (
-    <div ref={containerRef} className="w-full px-6 pt-12 pb-10 bg-[#fbf0f2] text-[#020817]">
+    <div ref={containerRef} className="w-full px-6 pt-12 pb-10 bg-[#F4F6F5] text-[#073624]">
       <Reveal>
         <h2
           className="text-[clamp(1.6rem,4.2vw,4.2rem)] leading-[1.1] mb-16 text-inherit text-center whitespace-nowrap mx-auto"
@@ -100,7 +100,7 @@ export default function Works() {
       </div>
 
       <div className="mt-20 flex justify-center">
-        <TransitionLink to="/work" className="px-8 py-4 rounded-full border border-current font-semibold hover:bg-[#020817] hover:text-[#fbf0f2] transition-colors inline-block text-[#020817]">
+        <TransitionLink to="/work" className="px-8 py-4 rounded-full border border-current font-semibold hover:bg-[#073624] hover:text-white transition-colors inline-block text-[#073624]">
           {ctaText}
         </TransitionLink>
       </div>

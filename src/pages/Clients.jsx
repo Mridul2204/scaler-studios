@@ -27,8 +27,8 @@ function FadeIn({ children, delay = 0, className }) {
 /* ─── Main ─── */
 export default function Clients() {
     useLayoutEffect(() => {
-        document.body.style.backgroundColor = "#fbf0f2";
-        document.body.style.color = "#020817";
+        document.body.style.backgroundColor = "#cefad0";
+        document.body.style.color = "#073624";
         return () => {
             document.body.style.backgroundColor = "";
             document.body.style.color = "";
@@ -133,7 +133,7 @@ export default function Clients() {
                                                 fontWeight: 600,
                                                 letterSpacing: '0.08em',
                                                 textTransform: 'uppercase',
-                                                color: '#020817',
+                                                color: '#073624',
                                                 opacity: 0.6,
                                                 textAlign: 'center',
                                                 lineHeight: 1.3,

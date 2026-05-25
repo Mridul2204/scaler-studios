@@ -30,10 +30,10 @@ export default function About() {
 
   return (
     // ✅ FULL PAGE BACKGROUND FIX
-    <div className="w-full bg-[#020817]">
+    <div className="w-full bg-[#073624]">
 
       {/* ✅ YOUR ORIGINAL CONTAINER (UNCHANGED DESIGN) */}
-      <div className="px-6 md:px-12 py-20 md:py-24 flex items-center w-full text-[#fbf0f2] relative">
+      <div className="px-6 md:px-12 py-20 md:py-24 flex items-center w-full text-white relative">
 
         <div className="w-full flex flex-col justify-center items-center text-center">
 
@@ -54,7 +54,7 @@ export default function About() {
 
             <Reveal delay={0.4}>
               <TransitionLink to="/about">
-                <button className="px-6 py-3 rounded-full bg-[#fbf0f2] text-[#020817] text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 shadow-sm border border-transparent hover:border-white">
+                <button className="px-6 py-3 rounded-full bg-[#1DBF73] text-[#073624] text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:bg-white hover:text-[#073624] hover:scale-105 shadow-sm border border-transparent hover:border-white">
                   <span>About us</span>
                   <span>→</span>
                 </button>

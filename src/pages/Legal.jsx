@@ -7,8 +7,8 @@ import { defaults } from "../lib/contentDefaults";
 
 export default function Legal() {
   useEffect(() => {
-    document.body.style.backgroundColor = "#fbf0f2";
-    document.body.style.color = "#020817";
+    document.body.style.backgroundColor = "#cefad0";
+    document.body.style.color = "#073624";
     return () => {
       document.body.style.backgroundColor = "";
       document.body.style.color = "";

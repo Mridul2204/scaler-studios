@@ -145,20 +145,20 @@
   font-display: swap;
 }
 
-/* 🎨 Design System */
+/* 🎨 Design System — Scaler Studios Green Palette */
 :root {
-  --color-cream: #fbf0f2;
-  --color-offwhite: #FFFFFF;
+  --color-cream: #F4F6F5;
+  --color-offwhite: #F4F6F5;
   --color-white: #FFFFFF;
-  --color-night: #0B0215;
-  --color-navy: #020817;
-  --color-blue: #2B59C3;
-  
-  --color-primary: var(--color-blue);
+  --color-night: #0A2629;
+  --color-navy: #073624;
+  --color-emerald: #1DBF73;
+  --color-teal: #0E2E2D;
+
+  --color-primary: var(--color-emerald);
   --color-black: var(--color-night);
   --color-light-gray: #f3f3f3;
   --color-dark: var(--color-navy);
-  --color-pink: #f7c4d5;
 
   --bg: var(--color-navy);
 
@@ -168,8 +168,8 @@
 
   /* Theme Accents */
   --accent-color: #ffffff;
-  --accent-bg: #ffffff;
-  --accent-text: #020817;
+  --accent-bg: #F4F6F5;
+  --accent-text: #073624;
 }
 
 /* Base styles */
@@ -184,7 +184,7 @@ body {
   overflow-x: clip;
   position: relative;
   background-color: var(--bg);
-  color: var(--color-cream);
+  color: #FFFFFF;
   font-family: 'PP Mori', sans-serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;

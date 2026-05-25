@@ -53,7 +53,7 @@ export default function Services() {
   });
 
   useLayoutEffect(() => {
-    document.body.style.backgroundColor = '#fbf0f2';
+    document.body.style.backgroundColor = '#cefad0';
     document.body.style.color = '#111111';
 
     const ctx = gsap.context(() => {

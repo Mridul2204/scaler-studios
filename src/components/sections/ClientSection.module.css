@@ -1,8 +1,8 @@
 .section {
   width: 100%;
   padding: 6rem 0 5rem;
-  background-color: #020817;
-  color: #fbf0f2;
+  background-color: #073624;
+  color: #FFFFFF;
 }
 
 .container {
@@ -28,7 +28,7 @@
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.1;
-  color: #fbf0f2;
+  color: #FFFFFF;
   margin: 0;
 }
 
@@ -72,7 +72,7 @@
   padding: 0.85rem 1.75rem;
   border: 1px solid rgba(251, 240, 242, 0.45);
   border-radius: 9999px;
-  color: #fbf0f2;
+  color: #FFFFFF;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -82,9 +82,9 @@
 }
 
 .showAllBtn:hover {
-  background-color: #fbf0f2;
-  color: #020817;
-  border-color: #fbf0f2;
+  background-color: #FFFFFF;
+  color: #073624;
+  border-color: #FFFFFF;
 }
 
 @media (max-width: 968px) {

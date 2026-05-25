@@ -1,0 +1,357 @@
+Now I can see the actual structure. This gives me everything I need to write a one-to-one replacement. Let me map it section by section, matched to the same lengths and item counts, in your no-em-dash, natural style. I'll keep the consultancy structure since you're replacing copy in an existing build, but tune the words to what Scaler actually does.
+
+A quick note on one judgment call: their service blocks lean prestige-consultancy ("Brand Strategy," "Experiential," "Corporate Gifting"). I've remapped those to *your* service set (video, motion, editing, ad creative, marketing) so it reflects what you sell, while keeping the same block count and rhythm so it drops into the build cleanly. I flag the few spots where I deviated and why.
+
+---
+
+## HOMEPAGE (Image 6 + Image 1 service blocks)
+
+**[TOP HERO — short rotating line, same length as "We Partner With Companies That Need Momentum"]**
+We Build Creative That Drives Growth
+
+**[SECONDARY HERO LINE — repeats, same as above]**
+We Build Creative That Drives Growth
+
+**[STATEMENT under product mockups — 3 short lines like "Strategic branding, digital & production built for companies in motion."]**
+Video, motion, and design
+built for brands that need
+to move fast and convert.
+
+**[CLIENT LOGO STRIP — label]**
+*(Your real client logos go here. Use the ones you can legitimately show.)*
+
+**[WORK SECTION TITLE — same as "Strategy. Design. Transformation."]**
+Edit. Animate. Perform.
+
+**[FEATURED WORK TILES — 6 tiles, client + one-line descriptor each. Replace with real projects]**
+
+[Client] | A launch film cut to land in the first three seconds.
+[Client] | Performance creative built to test and scale on paid social.
+[Client] | Motion storytelling across web, social, and ads.
+[Client] | A weekly content engine, delivered on schedule.
+[Client] | Investor sizzle reel in kinetic, high-energy motion.
+[Client] | Brand video that turned a complex product into a clear story.
+
+**[INSIGHTS SECTION — title + 3 cards, same as "Latest insights"]**
+*Title:* Latest insights
+
+*Card 1:* The Cost of Ad Creative Is Dropping.
+*Card 2:* Why Volume Beats Perfection in Paid Social.
+*Card 3:* Motion, Speed & Performance.
+
+---
+
+## SERVICES BLOCKS (Image 1 — 8 blocks, each: big title, 2-line description, sub-item list, image)
+
+I've kept all 8 blocks and matched the item counts per block. I remapped the categories to your services.
+
+**Block 1 — VIDEO EDITING** *(was Brand Strategy, purple)*
+*Description (2 lines):*
+Footage turned into stories that hold attention and earn the click, across every format you publish.
+
+*Sub-items (9, matching their count):*
+Short-Form Edits
+Long-Form Edits
+YouTube & Social
+Reels & Shorts
+Subtitles & Captions
+Repurposing
+Color & Sound
+Thumbnails
+Delivery in All Formats
+
+---
+
+**Block 2 — MOTION DESIGN** *(was Identity, grey)*
+*Description (2 lines):*
+Animation and graphics that bring brands to life and make every frame feel considered and intentional.
+
+*Sub-items (8):*
+Logo Animation
+Kinetic Typography
+Explainer Videos
+Motion Graphics
+Lower Thirds
+Animated Ads
+Title Sequences
+2D & 3D Animation
+
+---
+
+**Block 3 — AD CREATIVE** *(was Digital, orange)*
+*Description (2 lines):*
+Performance-led creative built to be tested, measured, and scaled across Meta, TikTok, and beyond.
+
+*Sub-items (9):*
+Static Ads
+Video Ads
+Hook Variations
+Concept Development
+A/B Test Sets
+Platform-Ready Sizing
+Creative Iteration
+Ad Copy
+Format Adaptation
+
+---
+
+**Block 4 — PERFORMANCE MARKETING** *(was AI Marketing, black)*
+*Description (2 lines):*
+Modern marketing built on testing, data, and fast creative execution, so growth is handled end to end.
+
+*Sub-items (8):*
+Campaign Management
+Creative Testing
+Meta & Google Ads
+Audience Strategy
+Media Buying
+Performance Reporting
+Rapid Iteration
+Conversion Optimization
+
+*(Note: this is the closest match to their "AI Marketing" black block. I deliberately did NOT call it "AI Marketing," to keep AI as a quiet capability rather than the headline, per your positioning. If you want AI named here, say so and I'll adjust.)*
+
+---
+
+**Block 5 — SOCIAL CONTENT** *(was Sprints, light grey)*
+*Description (2 lines):*
+A steady stream of content made for the feed, produced fast and on brand, week after week.
+
+*Sub-items (5, matching their count):*
+Content Calendars
+Reels & Shorts
+Carousels
+Story Sets
+Ongoing Production
+
+---
+
+**Block 6 — GRAPHIC DESIGN** *(was Experiential, pale green)*
+*Description (2 lines):*
+Clean, considered visuals across every touchpoint, from a single post to a full brand system.
+
+*Sub-items (4, matching their count):*
+Social Graphics
+Presentations
+Marketing Assets
+Brand Systems
+
+---
+
+**Block 7 — CAMPAIGNS & CONTENT** *(keep their title, dark navy)*
+*Description (2 lines):*
+Cinematic storytelling that drives brand awareness and performance across every channel that matters.
+
+*Sub-items (8):*
+Brand Campaigns
+Social Content
+Motion & Animation
+Paid Media
+Media Buying
+Audience Strategy
+Campaign Rollout
+Content Production
+
+---
+
+**Block 8 — WEB & BRAND** *(was Corporate Gifting, blue)*
+*Description (3 lines, matching their longer block):*
+Sites and identity work that make the right first impression, built to convert and designed to scale with the brand as it grows.
+
+*Sub-items (9):*
+Landing Pages
+Website Design
+Web Development
+Brand Identity
+Logo & Wordmark
+Visual Systems
+Conversion Design
+CMS Integration
+Asset Libraries
+
+---
+
+## CONTACT POPUP (Image 5)
+
+*Title (same as "How Can We Help?"):*
+How Can We Help?
+
+*Subline:*
+Briefly describe your project, goals, or challenge.
+
+*Question:* What can we do for you?
+
+*Tags (5, matching their count):*
+Video Editing
+Motion Design
+Ad Creative
+Marketing
+Other
+
+*Section label:* Your information
+*Fields:* Your name / Your email / [message box]
+*Button:* Submit
+
+---
+
+## CLIENTS PAGE (Image 2)
+
+*Hero (2 short lines, same as "Credibility built through execution"):*
+Trusted by
+brands that ship
+
+*Body paragraph 1 (same length):*
+For brands across e-commerce, tech, finance, and entertainment, Scaler Studios produces the creative that moves work from idea to live.
+
+*Body paragraph 2 (same length):*
+From a single edit to full campaign production, we help teams create more, faster, without losing the craft.
+
+*(Logo grid: your real client logos.)*
+
+*Closing line (same as "Want to join our client roster?"):*
+Want to work with us?
+*Button:* Get in Touch
+
+---
+
+## WORK PAGE (Image 4)
+
+*Tabs (same as "Featured / All projects / Industries" with counts):*
+Featured | All Work | Industries
+
+*Search placeholder:*
+Find work by client, type
+
+*(Work tiles: client name | one-line descriptor | category. Replace with real projects. Same 6-tile featured layout. Examples below, swap for real ones:)*
+
+[Client] | A launch film built to convert from the first frame. — E-commerce
+[Client] | Performance creative tested and scaled on paid social. — DTC
+[Client] | Repositioning a product for a new audience. — Consumer
+[Client] | High-energy sizzle reel for an investor raise. — Tech
+[Client] | A weekly social content engine, fully managed. — Lifestyle
+[Client] | Motion campaign across web and social. — SaaS
+
+---
+
+## ABOUT PAGE (Image 3)
+
+*Giant headline (same as "Est. 2005" — use your real founding year):*
+Est. 2020
+
+*Body paragraph 1 (same length as theirs):*
+Scaler Studios is a creative studio partnering with brands during moments of growth, launch, and scale.
+
+*Body paragraph 2 (same length):*
+Working across video, motion, design, and marketing, we help founders, marketers, and teams turn raw footage and rough ideas into work that performs, where speed matters and quality cannot slip.
+
+*Body paragraph 3 (same length):*
+Built around craft, speed, and reliability, Scaler Studios combines a senior creative team with fast, scalable production to deliver real results across brands, platforms, and markets.
+
+*(Two CTA cards at bottom, same as "Request Inquiry" / "Request Review"):*
+
+*Card 1 (light):*
+*Small label:* Ready When You Are
+*Subline:* Video, motion, design & marketing.
+*Big text:* Start a Project
+
+*Card 2 (blue):*
+*Small label:* Creative Review
+*Subline:* A focused look at your current creative to find quick wins and opportunities.
+*Big text:* Request a Review
+
+---
+
+## FOOTER (all pages)
+
+*Explore:* Services / Work / About / Clients
+*Social:* LinkedIn / Instagram
+*Email:* studio@scalerstudios.com *(swap for your real address)*
+*Phone:* [your number]
+*Bottom line:* © 2020–2026 Scaler Studios | Legal
+*Address line:* [your UAE or Bangalore address]
+
+---
+
+Three things to hand off cleanly with this:
+
+The `[Client]` placeholders and the work descriptors need your real projects dropped in. That curated work section is what carries this whole design, so it's worth giving the developer the real names, categories, and thumbnails rather than shipping placeholders.
+
+I made one deliberate positioning choice worth confirming: I renamed their "AI Marketing" block to "Performance Marketing" so AI stays a quiet capability, not the headline, matching the Superside-style position you wanted. If you'd rather keep an explicit AI block, tell me and I'll write it to the same length.
+
+Check the founding year (I put 2020 from what I know of Scaler, swap if wrong) and the contact details before it goes live.
+
+Want me to also write the three "Latest insights" article stubs, or the individual case-study page copy for the featured work, in the same matched format?
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+Let me resize it so I can see your actual colours.Now I can see your actual palette. Let me sample the exact colours so I'm giving you real hex values, not eyeballed guesses.I have enough to lock your palette accurately. Here's what you're actually using.
+
+## Your current brand colours
+
+Your identity is a **green system**, which is genuinely good news. It's distinctive (most creative studios default to black/white or the generic purple-blue you saw on Marshall Haber), it reads as growth/performance-oriented which fits your DTC pivot perfectly, and it gives you a real ownable hue. The colours I pulled:
+
+**Deep forest green** `#073624` — your darkest, the hero background
+**Rich teal-green** `#0E2E2D` / `#0A2629` — the dark bands and footer
+**Bright emerald** `#1DBF73` — your accent / highlight / CTA green
+**Off-white** `#F4F6F5` — backgrounds and light sections
+**White** `#FFFFFF` — text on dark, clean panels
+
+So your real palette is essentially: **two darks (forest + teal), one bright green accent, and off-white/white.** That's a tight, confident palette, which as I mentioned last message is actually *better* than a many-colour scheme for looking premium.
+
+## My honest recommendation: keep the green, drop the rainbow
+
+Here's the key decision. Marshall Haber's design works by giving each service block a *different* loud colour (purple, orange, blue, black). If you copy that structure but force your green identity into it, you have two bad options: either you go rainbow and lose your green identity, or you make eight green blocks and it gets monotonous.
+
+The better move, and what'll actually look more premium: **don't do eight different colours at all.** Use your green system as the spine and let the *work imagery* provide the colour variety. This is more sophisticated than the rainbow approach and it keeps you unmistakably "Scaler green." A focused palette used confidently beats a rainbow every time, especially for the Superside-tier positioning you want.
+
+So I'm going to map the sections using only your real colours plus tonal variation, not invented hues.
+
+## Section-by-section colour map (your palette only)
+
+**Homepage hero** — Deep forest `#073624` background, white text, bright emerald `#1DBF73` on the one or two accent words (like your current "Creative Powerhouse" treatment). Keep this; it's already your signature.
+
+**Client logo strip** — Off-white `#F4F6F5`, logos in mono grey. A light breather right after the dark hero.
+
+**Featured work tiles** — Off-white `#F4F6F5` background. The thumbnails carry all the colour. Don't tint.
+
+**Insights cards (3)** — This is your one controlled spot for tonal play: Card 1 = off-white with forest text, Card 2 = bright emerald `#1DBF73` (solid, the punch), Card 3 = deep forest `#073624` with white text. Light → bright → dark trio.
+
+Now the eight service blocks. Instead of eight colours, alternate **forest dark / off-white / teal dark / off-white** with emerald as the accent *within* blocks (headings, sub-item bullets, small highlights), never as a full block fill except once:
+
+**Block 1 — Video Editing** → Deep forest `#073624`, white text, emerald accents. Strong dark open.
+
+**Block 2 — Motion Design** → Off-white `#F4F6F5`, forest text. Breather.
+
+**Block 3 — Ad Creative** → Bright emerald `#1DBF73`, dark forest text. This is your ONE full-emerald block, placed on your growth-driver service so the energy lands where it matters.
+
+**Block 4 — Performance Marketing** → Deep forest `#073624` / near-black, white text. Centre anchor, most premium-serious block.
+
+**Block 5 — Social Content** → Off-white `#F4F6F5`. Reset.
+
+**Block 6 — Graphic Design** → Very pale green tint (a desaturated `#1DBF73` at ~8% over off-white), forest text. Subtle.
+
+**Block 7 — Campaigns & Content** → Teal-dark `#0E2E2D`, white text. Second dark anchor, slightly different tone from forest so it's not repetitive.
+
+**Block 8 — Web & Brand** → Off-white `#F4F6F5`, forest text, emerald CTA. Clean close.
+
+**About "Est. 2020" hero** — Off-white `#F4F6F5`, oversized forest `#073624` text. Scale is the drama.
+
+**About CTA cards (2)** — Card 1 = off-white with forest text; Card 2 = deep forest `#073624` with white text and emerald button. (Replaces their grey + blue with your dark + light.)
+
+**Contact popup** — Off-white `#F4F6F5` card, deep forest `#073624` Submit button, emerald hover.
+
+**Clients page** — Off-white throughout, mono-grey logos. Clean and credible.
+
+**Footer** — Teal-dark `#0A2629` (your current footer green), white text, emerald links. Already on-brand, keep it.
+
+## The rule for your developer
+
+The pattern across the eight blocks: **forest → light → emerald → forest → light → pale-green → teal → light.** Only one full-emerald block (Ad Creative). Emerald otherwise appears only as accents: headings, bullet markers, buttons, the odd highlighted word. Two dark anchors (forest centre, teal lower). Everything else off-white.
+
+This keeps you 100% on your existing green brand, looks more premium than the rainbow original, and costs nothing to define since these are colours you already own.
+
+One small upgrade worth considering: your current bright green `#1DBF73` is very close to the standard Spotify green, which is fine but slightly generic. If you ever want to feel more ownable and premium, nudging the accent a touch deeper or more emerald (something like `#12A866` or `#149E63`) would differentiate you while staying clearly "your green." Totally optional, and I'd only do it if you're refreshing the logo anyway, not as a standalone change.
+
+Want me to write out the full hex palette as a clean spec sheet (with the exact codes, usage rules, and the per-section assignments) that you can hand straight to the developer alongside the copy? That'd give them one document with copy + colours mapped together.

@@ -17,7 +17,7 @@ export default function Work() {
   const [searchPlaceholder, setSearchPlaceholder] = useState("Find work by client, type");
 
   useLayoutEffect(() => {
-    document.body.style.backgroundColor = "#fbf0f2";
+    document.body.style.backgroundColor = "#cefad0";
     document.body.style.color = "#020817";
 
     const handleResize = () => {

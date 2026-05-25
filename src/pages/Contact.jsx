@@ -44,7 +44,7 @@ export default function Contact() {
   const form = getContent(sections, "form", defaults.contact.form);
 
   useLayoutEffect(() => {
-    document.body.style.backgroundColor = '#fbf0f2';
+    document.body.style.backgroundColor = '#cefad0';
     return () => {
       document.body.style.backgroundColor = '';
     };

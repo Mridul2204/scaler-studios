@@ -87,24 +87,15 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full h-[100dvh] bg-[#020817]">
+    <section ref={containerRef} className="relative w-full h-[100dvh] bg-[#073624]">
 
-      {/* LOGO — Upper Center */}
-      <div
-        ref={logoRef}
-        className="absolute top-[15vh] w-full flex flex-col items-center gap-8 z-10 pointer-events-none"
-      >
-        <div className="w-[70vw] md:w-[60vw] max-w-[500px] aspect-square opacity-20">
-          <SmileLogo />
-        </div>
-      </div>
 
       {/* TEXT — Centered */}
       <div
         ref={textRef}
         className="absolute top-[48vh] md:top-[40vh] w-full flex justify-center z-20 pointer-events-none px-6"
       >
-        <h2 className="text-center tracking-tight sm:whitespace-nowrap text-[#fbf0f2] leading-[1.1]" style={{ fontSize: "clamp(1.2rem, 3.8vw, 3.1rem)", fontFamily: "'Nib Pro', serif", fontWeight: 300 }}>
+        <h2 className="text-center tracking-tight sm:whitespace-nowrap text-white leading-[1.1]" style={{ fontSize: "clamp(1.2rem, 3.8vw, 3.1rem)", fontFamily: "'Nib Pro', serif", fontWeight: 300 }}>
           {headingBold} {headingItalic}
         </h2>
       </div>
@@ -116,7 +107,7 @@ export default function Hero() {
           position: "absolute",
           borderRadius: "12px",
           boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-          backgroundColor: "#0B0215",
+          backgroundColor: "#0A2629",
           overflow: "hidden",
           zIndex: 40,
         }}

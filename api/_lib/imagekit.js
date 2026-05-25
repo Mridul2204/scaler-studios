@@ -7,7 +7,7 @@ const imagekit = new ImageKit({
   urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
 });
 
-async function uploadBuffer(buffer, fileName, folder = "/marshall-admin") {
+async function uploadBuffer(buffer, fileName, folder = "/ScalerStudios") {
   const file = await toFile(buffer, fileName);
   const result = await imagekit.files.upload({
     file,

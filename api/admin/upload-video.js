@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     const result = await uploadBuffer(
       buffer,
       file.originalFilename || "video",
-      "/marshall-admin/videos"
+      "/ScalerStudios/videos"
     );
     res.json({ url: result.url });
   } catch (err) {

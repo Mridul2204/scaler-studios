@@ -77,7 +77,7 @@ app.post("/api/admin/upload-image", adminAuth, upload.single("image"), async (re
     const result = await uploadToImageKit(
       req.file.buffer,
       req.file.originalname || "image.png",
-      "/marshall-admin/images"
+      "/ScalerStudios/images"
     );
     res.json({ url: result.url });
   } catch (err) {
@@ -91,7 +91,7 @@ app.post("/api/admin/upload-video", adminAuth, upload.single("video"), async (re
     const result = await uploadToImageKit(
       req.file.buffer,
       req.file.originalname || "video.mp4",
-      "/marshall-admin/videos"
+      "/ScalerStudios/videos"
     );
     res.json({ url: result.url });
   } catch (err) {
@@ -191,7 +191,7 @@ app.post("/api/admin/migrate-logos", adminAuth, async (req, res) => {
         if (!resp.ok) { urlMap[url] = null; continue; }
         const buffer = Buffer.from(await resp.arrayBuffer());
         const fileName = url.split("/").pop().split("?")[0] || "logo.png";
-        const result = await uploadToImageKit(buffer, fileName, "/marshall-admin/logos");
+        const result = await uploadToImageKit(buffer, fileName, "/ScalerStudios/logos");
         urlMap[url] = result.url;
       } catch {
         urlMap[url] = null;
@@ -257,8 +257,8 @@ app.post("/api/admin/contact", async (req, res) => {
     await submission.save();
 
     const { error: emailError } = await resend.emails.send({
-      from: "Marshall Haber Creative Group <noreply@updates.marshallhaber.com>",
-      to: ["marshall@marshallhaber.com", "frontdesk@marshallhaber.com", "syedimtiyazali141@gmail.com"],
+      from: "Scaler Studios <noreply@updates.scalerstudios.com>",
+      to: ["studio@scalerstudios.com"],
       subject: `New Lead Submitted: ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 8px; background-color: #fbf0f2; color: #020817;">

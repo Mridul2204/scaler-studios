@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     const result = await uploadBuffer(
       buffer,
       file.originalFilename || "image",
-      "/marshall-admin/images"
+      "/ScalerStudios/images"
     );
     res.json({ url: result.url });
   } catch (err) {

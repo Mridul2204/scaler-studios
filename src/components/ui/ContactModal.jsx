@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ContactModal.module.css';
 
-const SERVICE_OPTIONS = ['Brand Strategy', 'Identity', 'Website', 'Product design', 'Other'];
+const SERVICE_OPTIONS = ['Video Editing', 'Motion Design', 'Ad Creative', 'Marketing', 'Other'];
 
 const INITIAL = {
     services: new Set(),
@@ -237,7 +237,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
                                         <div className={styles.footerRow}>
                                             <div className={styles.modalPhoneText}>
-                                                Phone: +1 212.494.9052
+                                                studio@scalerstudios.com
                                             </div>
                                             <button type="submit" className={styles.submitBtn}>
                                                 Submit

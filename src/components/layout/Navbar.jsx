@@ -440,7 +440,7 @@ export default function Navbar() {
             />
             <img
               src="/logonewlong.png"
-              alt="Marshall Haber Creative Group"
+              alt="Scaler Studios"
               className="absolute left-0 top-0 h-6 w-auto cursor-pointer transition-all duration-700 ease-in-out"
               style={{
                 opacity: showCenterLogo ? 0 : 1,
@@ -483,7 +483,7 @@ export default function Navbar() {
             />
             <img
               src="/logonewlong.png"
-              alt="Marshall Haber Creative Group"
+              alt="Scaler Studios"
               className="absolute h-28 w-auto cursor-pointer transition-all duration-700 ease-in-out"
               style={{
                 opacity: showCenterLogo ? 0 : 1,

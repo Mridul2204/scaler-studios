@@ -14,7 +14,7 @@ export const defaults = {
     hero: {
       headingBold: "We Build Creative",
       headingItalic: "That Drives Growth",
-      videoUrl: "",
+      videoUrl: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/video.mp4",
     },
     about: {
       heading: "Video, motion, and design\nbuilt for brands that need\nto move fast and convert.",

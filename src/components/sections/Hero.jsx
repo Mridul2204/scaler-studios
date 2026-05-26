@@ -2,10 +2,11 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SmileLogo from "../ui/SmileLogo";
-import videoSrc from "../../assets/video.mp4";
 import { usePageContent } from "../../hooks/usePageContent";
 import { getContent } from "../../lib/content";
 import { defaults } from "../../lib/contentDefaults";
+
+const IMAGEKIT_VIDEO = "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/video.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ export default function Hero() {
   const headingBold = getContent(sections, "hero.headingBold", defaults.home.hero.headingBold);
   const headingItalic = getContent(sections, "hero.headingItalic", defaults.home.hero.headingItalic);
   const cmsVideoUrl = getContent(sections, "hero.videoUrl", defaults.home.hero.videoUrl);
-  const activeVideoUrl = cmsVideoUrl || videoSrc;
+  const activeVideoUrl = cmsVideoUrl || IMAGEKIT_VIDEO;
 
   // useLayoutEffect ensures cleanup (ctx.revert) runs BEFORE React removes
   // the DOM nodes, so GSAP can properly un-pin and remove the pin spacer.
@@ -117,6 +118,7 @@ export default function Hero() {
           loop
           muted
           playsInline
+          crossOrigin="anonymous"
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           src={activeVideoUrl}
         />

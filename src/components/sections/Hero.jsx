@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SmileLogo from "../ui/SmileLogo";
-import videoSrc from "../../assets/showreel.mp4";
+import videoSrc from "../../assets/video.mp4";
 import { usePageContent } from "../../hooks/usePageContent";
 import { getContent } from "../../lib/content";
 import { defaults } from "../../lib/contentDefaults";

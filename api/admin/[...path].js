@@ -258,7 +258,7 @@ app.post("/api/admin/contact", async (req, res) => {
 
     const { error: emailError } = await resend.emails.send({
       from: "Scaler Studios <noreply@updates.scalerstudios.com>",
-      to: ["studio@scalerstudios.com"],
+      to: ["mridul@scalerstudios.com"],
       subject: `New Lead Submitted: ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 8px; background-color: #fbf0f2; color: #020817;">

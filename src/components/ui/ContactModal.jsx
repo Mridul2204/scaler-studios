@@ -13,6 +13,8 @@ const INITIAL = {
     stage: 'form',
 };
 
+let fieldIdCounter = 0;
+
 export default function ContactModal({ isOpen, onClose }) {
     const [services, setServices] = useState(INITIAL.services);
     const [name, setName] = useState(INITIAL.name);
@@ -20,6 +22,7 @@ export default function ContactModal({ isOpen, onClose }) {
     const [phone, setPhone] = useState(INITIAL.phone);
     const [message, setMessage] = useState(INITIAL.message);
     const [stage, setStage] = useState(INITIAL.stage);
+    const [extraFields, setExtraFields] = useState([]);
     const prevOverflow = useRef('');
 
     const isPristine =
@@ -37,6 +40,18 @@ export default function ContactModal({ isOpen, onClose }) {
         }
     };
 
+    const addField = () => {
+        setExtraFields((prev) => [...prev, { id: ++fieldIdCounter, label: '', value: '' }]);
+    };
+
+    const removeField = (id) => {
+        setExtraFields((prev) => prev.filter((f) => f.id !== id));
+    };
+
+    const updateField = (id, key, val) => {
+        setExtraFields((prev) => prev.map((f) => f.id === id ? { ...f, [key]: val } : f));
+    };
+
     // Reset state whenever the modal closes so re-opening is clean.
     useEffect(() => {
         if (!isOpen) {
@@ -46,6 +61,7 @@ export default function ContactModal({ isOpen, onClose }) {
             setPhone('');
             setMessage('');
             setStage('form');
+            setExtraFields([]);
         }
     }, [isOpen]);
 
@@ -89,6 +105,7 @@ export default function ContactModal({ isOpen, onClose }) {
             email,
             phone,
             message,
+            extraFields: extraFields.filter((f) => f.label || f.value),
         };
         try {
             const res = await fetch('/api/admin/contact', {
@@ -235,10 +252,53 @@ export default function ContactModal({ isOpen, onClose }) {
                                             />
                                         </div>
 
-                                        <div className={styles.footerRow}>
-                                            <div className={styles.modalPhoneText}>
-                                                studio@scalerstudios.com
+                                        {extraFields.length > 0 && (
+                                            <div className={styles.section}>
+                                                <label className={styles.sectionLabel}>Additional info</label>
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                                    {extraFields.map((f) => (
+                                                        <div key={f.id} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                                            <input
+                                                                type="text"
+                                                                className={styles.inputPill}
+                                                                placeholder="Field label"
+                                                                value={f.label}
+                                                                onChange={(e) => updateField(f.id, 'label', e.target.value)}
+                                                                style={{ flex: '0 0 35%' }}
+                                                            />
+                                                            <input
+                                                                type="text"
+                                                                className={styles.inputPill}
+                                                                placeholder="Value"
+                                                                value={f.value}
+                                                                onChange={(e) => updateField(f.id, 'value', e.target.value)}
+                                                                style={{ flex: 1 }}
+                                                            />
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => removeField(f.id)}
+                                                                aria-label="Remove field"
+                                                                style={{ flexShrink: 0, background: 'none', border: 'none', cursor: 'pointer', opacity: 0.5, padding: '4px' }}
+                                                            >
+                                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                                    <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             </div>
+                                        )}
+
+                                        <div className={styles.footerRow}>
+                                            <button
+                                                type="button"
+                                                onClick={addField}
+                                                style={{ background: 'none', border: '1px dashed currentColor', borderRadius: '9999px', padding: '6px 16px', fontSize: '0.75rem', fontWeight: 600, opacity: 0.5, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
+                                            >
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14" strokeLinecap="round"/></svg>
+                                                Add field
+                                            </button>
                                             <button type="submit" className={styles.submitBtn}>
                                                 Submit
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

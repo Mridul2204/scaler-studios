@@ -58,7 +58,7 @@ export default function ServiceBlock({
   return (
     <div
       className={`w-full flex flex-col md:flex-row items-stretch ${textColor} relative`}
-      style={{ minHeight: "500px" }}
+      style={{ minHeight: "auto" }}
     >
       {/* LEFT: title + description + list */}
       <div className="w-full md:w-[60%] flex flex-col justify-start shrink-0 items-start p-6 md:p-14 gap-8 md:gap-16">
@@ -112,9 +112,9 @@ export default function ServiceBlock({
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        className="w-full md:w-[40%] flex items-start justify-end p-6 md:p-10"
+        className="w-full md:w-[40%] flex items-start justify-end px-6 pb-8 pt-0 md:p-10"
       >
-        <div className="w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden">
+        <div className="w-full max-w-[420px] aspect-[4/3] md:aspect-square rounded-2xl overflow-hidden">
           {dynamicContent}
         </div>
       </motion.div>
@@ -123,42 +123,33 @@ export default function ServiceBlock({
   );
 }
 
-export const StrategyVideo = () => (
-  <div className="w-full h-full relative overflow-hidden bg-black/5">
-    <img
-      src="/src/assets/myWork/TopImages/toronto.png"
-      alt="Brand Strategy"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-  </div>
-);
+/**
+ * Fallback visual for a service panel when the CMS has no image/video for it.
+ * Picks a Scaler image from /public/scaler-img by the panel title.
+ */
+const PANEL_IMAGES = [
+  [/video|edit|youtube|reel|short/i, "/scaler-img/videoediting.jpg"],
+  [/motion|animation|explainer/i, "/scaler-img/motion-design.jpg"],
+  [/ad creative|creative/i, "/scaler-img/ad-creative.jpg"],
+  [/performance|marketing|ads|media/i, "/scaler-img/google-ads.jpg"],
+  [/social|content/i, "/scaler-img/social-media-creative.jpg"],
+  [/graphic|design|brand|identity/i, "/scaler-img/Graphic-design.jpg"],
+  [/web|site|app|digital/i, "/scaler-img/webdesign.jpg"],
+  [/campaign/i, "/scaler-img/adcreative.jpg"],
+];
 
-export const VisualImage = () => (
-  <div className="w-full h-full relative overflow-hidden bg-black/5">
-    <img
-      src="/src/assets/myWork/TopImages/optifino.png"
-      alt="Identity"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-  </div>
-);
+export function PanelVisual({ title = "" }) {
+  const match = PANEL_IMAGES.find(([re]) => re.test(title));
+  const src = match ? match[1] : "/scaler-img/Video-Services-1.jpg";
+  return (
+    <div className="w-full h-full relative overflow-hidden bg-black/5">
+      <img src={src} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+    </div>
+  );
+}
 
-export const WebsiteImage = () => (
-  <div className="w-full h-full relative overflow-hidden bg-black/5">
-    <img
-      src="/src/assets/myWork/TopImages/memri.png"
-      alt="Digital"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-  </div>
-);
-
-export const ProductImage = () => (
-  <div className="w-full h-full relative overflow-hidden bg-black/5">
-    <img
-      src="/src/assets/myWork/TopImages/jpMorgan.png"
-      alt="Product"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-  </div>
-);
+// Kept for backwards compatibility; all map to PanelVisual now.
+export const StrategyVideo = () => <PanelVisual title="video" />;
+export const VisualImage = () => <PanelVisual title="motion" />;
+export const WebsiteImage = () => <PanelVisual title="ad creative" />;
+export const ProductImage = () => <PanelVisual title="performance" />;

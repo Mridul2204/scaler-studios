@@ -89,7 +89,7 @@ export default function Insights() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex items-center gap-2 shrink-0 mt-2"
+            className="hidden md:flex items-center gap-2 shrink-0 mt-2"
           >
             <motion.div
               style={{ borderColor: buttonBorder, color: buttonBorder }}

@@ -225,14 +225,11 @@ export const defaults = {
       heading: "Trusted by brands that ship",
       subtext: "From a single edit to full campaign production, we help teams create more, faster, without losing the craft.",
     },
-    // Logos live in /public/scaler-img. Add more here or via the admin CMS (Clients page).
+    // Reverted to the pre-October 2026 state at Mridul's request (the six-logo
+    // grid looked off on the main site). Landing pages keep their own logo strip
+    // in src/data/landingPages.js. Add clients here or via the admin CMS.
     list: [
-      { name: "Verizon", logo: "/scaler-img/verizon-logo.png", category: "Telecom", logoSize: "100", showOnHome: true },
-      { name: "Shopify", logo: "/scaler-img/shopify-logo.png", category: "Tech", logoSize: "100", showOnHome: true },
-      { name: "Subway", logo: "/scaler-img/subway-logo.png", category: "Food & Retail", logoSize: "100", showOnHome: true },
-      { name: "Maersk", logo: "/scaler-img/maersk-logo.png", category: "Logistics", logoSize: "100", showOnHome: true },
-      { name: "Allianz", logo: "/scaler-img/allianz-logo.png", category: "Finance", logoSize: "100", showOnHome: true },
-      { name: "Bringg", logo: "/scaler-img/bringg.png", category: "Tech", logoSize: "100", showOnHome: true },
+      { name: "Weizmann Institute of Science", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/logos/weizmann-institute.png", category: "Education", logoSize: "160", showOnHome: true },
     ],
     cta: {
       heading: "Want to work with us?",

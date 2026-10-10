@@ -199,6 +199,206 @@ export const landingPages = {
   },
 };
 
+landingPages["video-editing"] = {
+  // ── Meta / SEO ──
+  seo: {
+    title: "Unlimited Video Editing Subscription: Short and Long-Form",
+    description:
+      "Flat monthly video editing for creators, founders and brands. Shorts in 24-48 hours, long-form in 2-4 days, unlimited requests, from a Fiverr Pro-vetted team rated 4.9 by 1,750+ clients.",
+    noindex: false,
+  },
+  source: "lp-video-editing",
+  showPrices: true,
+
+  // ── Hero ──
+  hero: {
+    eyebrow: "Video editing subscription for creators, founders and brands",
+    headline: "Unlimited video editing,",
+    headlineAccent: "one flat monthly fee.",
+    subhead:
+      "Short-form and long-form edits from a 10-person team rated 4.9 across 1,750+ client reviews, with work delivered for Verizon, Shopify and Subway. Shorts back in 24-48 hours, long-form in 2-4 days. Pause or cancel any time.",
+    primaryCta: "Get a free content review",
+    secondaryCta: "See plans",
+    videoUrl: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/video.mp4",
+    bullets: [
+      "Unlimited requests, queued and worked in order",
+      "Shorts in 24-48 hours, long-form in 2-4 days",
+      "No contracts, pause or cancel any month",
+    ],
+  },
+
+  trust: {
+    label: "Edits delivered for",
+    logos: [
+      { name: "Verizon", src: "/scaler-img/verizon-logo.png" },
+      { name: "Shopify", src: "/scaler-img/shopify-logo.png" },
+      { name: "Subway", src: "/scaler-img/subway-logo.png" },
+      { name: "Maersk", src: "/scaler-img/maersk-logo.png" },
+      { name: "Allianz", src: "/scaler-img/allianz-logo.png" },
+      { name: "Bringg", src: "/scaler-img/bringg.png" },
+    ],
+  },
+
+  // ── Problem ──
+  problem: {
+    heading: "Editing is the bottleneck between recording and publishing.",
+    body:
+      "You can film in an afternoon. Then the footage sits for two weeks because nobody has time to cut it, caption it and resize it for every platform. Freelancers disappear, in-house editors are expensive to hire and slow to replace, and the channel goes quiet. A subscription editing team removes the bottleneck for a fixed monthly cost.",
+    points: [
+      { title: "Consistency beats virality", text: "Channels grow on cadence. Weekly uploads and daily shorts need an editing pipeline, not a favour from a friend." },
+      { title: "One recording, ten assets", text: "A 20-minute video becomes shorts, clips, quotes and thumbnails. Repurposing is where the reach comes from." },
+      { title: "A team, not a freelancer", text: "Editor, motion designer and project manager on every plan, so a holiday or a sick day never stalls your calendar." },
+    ],
+  },
+
+  // ── Deliverables ──
+  deliverables: {
+    heading: "What's included in every plan",
+    items: [
+      { title: "Short-form edits", text: "Reels, Shorts and TikToks cut for retention: hooks, captions, b-roll, sound design and pacing for each platform." },
+      { title: "Long-form edits", text: "YouTube videos, podcasts, courses, webinars and talking-head content with clean cuts, graphics and music." },
+      { title: "Captions and subtitles", text: "Styled captions on every short, accurate subtitles on long-form, multi-language on request." },
+      { title: "Motion graphics and titles", text: "Intros, lower thirds, animated text and branded templates that make every video recognisably yours." },
+      { title: "Thumbnails and covers", text: "Click-worthy thumbnails and cover frames designed to match the edit, delivered with the video." },
+      { title: "Repurposing", text: "One long recording turned into a week of shorts, clips and quote cards, sized for every feed." },
+    ],
+  },
+
+  // ── Packages (modelled on subscription editing plans; prices in USD) ──
+  packages: {
+    heading: "Simple plans. Unlimited requests.",
+    subhead: "Every plan is month to month with no contract. Queue as many requests as you like; your plan sets how many are in production at once.",
+    note: "Prices in USD. A request is one deliverable (one video or one set of shorts from one recording). Unused long-form edits do not roll over.",
+    tiers: [
+      {
+        name: "Startup",
+        price: "$999",
+        period: "/month",
+        tagline: "For creators and founders publishing 1-2 videos a week",
+        features: [
+          "2 long-form edits per month",
+          "Unlimited short-form requests, 1 in production at a time",
+          "Shorts in 24-48 hours, long-form in 2-4 days",
+          "10+ editing styles, captions included",
+          "2 revision rounds per video",
+          "Dedicated editor and project manager",
+        ],
+        cta: "Start with Startup",
+        highlight: false,
+      },
+      {
+        name: "Growth",
+        price: "$2,499",
+        period: "/month",
+        tagline: "For brands and channels posting daily",
+        features: [
+          "5 long-form edits per month",
+          "Unlimited requests, 3 in production at a time",
+          "25+ editing styles, thumbnails included",
+          "Posting support: captions, hashtags, scheduling-ready files",
+          "3 revision rounds per video",
+          "3-person team: editor, motion designer, project manager",
+        ],
+        cta: "Start with Growth",
+        highlight: true,
+        badge: "Most popular",
+      },
+      {
+        name: "Creator",
+        price: "$4,999",
+        period: "/month",
+        tagline: "For media brands, agencies and multi-channel teams",
+        features: [
+          "10 long-form edits per month",
+          "Unlimited requests, 4 in production at a time",
+          "Advanced editing, motion design and a branded template kit",
+          "Priority turnaround on every request",
+          "Unlimited revisions",
+          "5-person creative team with a lead editor",
+        ],
+        cta: "Start with Creator",
+        highlight: false,
+      },
+    ],
+    more: {
+      heading: "Need more than ten long-form edits a month?",
+      text: "Studio and Enterprise plans from $7,999/month: unlimited edits, a dedicated production team, multi-language versions and cinematic colour grading, built around your calendar.",
+      cta: "Talk to us about Studio",
+    },
+  },
+
+  // ── Process ──
+  process: {
+    heading: "How it works",
+    steps: [
+      { n: "01", title: "Free content review", text: "Send us your channel or a few recent videos. Within two business days you get a short review: what to cut, what to repurpose and which plan fits." },
+      { n: "02", title: "Onboard in a day", text: "Pick a plan, share your brand assets and footage folder, meet your project manager on a 30-minute call. Your first request goes into the queue the same day." },
+      { n: "03", title: "We edit", text: "Shorts come back in 24-48 hours, long-form in 2-4 days. Review in the browser, leave timestamped comments, approve." },
+      { n: "04", title: "Publish and repeat", text: "Keep the queue full. We keep the calendar full. Scale the plan up or down with a week's notice." },
+    ],
+  },
+
+  // ── Proof ──
+  proof: {
+    heading: "What clients say",
+    subhead: "Reviews from verified orders on our Fiverr Pro agency profile.",
+  },
+
+  // ── Samples ──
+  samples: {
+    heading: "Styles we edit every week",
+    items: [
+      { src: "/scaler-img/videoediting.jpg", alt: "Short-form video edit on a phone", label: "Shorts and Reels" },
+      { src: "/scaler-img/video-editing.jpg", alt: "YouTube thumbnail and long-form edit", label: "YouTube" },
+      { src: "/scaler-img/video-editor.jpg", alt: "Editing timeline on a laptop", label: "Talking head and podcast" },
+      { src: "/scaler-img/motion-design.jpg", alt: "Motion graphics still", label: "Motion graphics" },
+      { src: "/scaler-img/social-media-creative.jpg", alt: "Social media creative on phones", label: "Social content" },
+      { src: "/scaler-img/Video-Services-1.jpg", alt: "Product video on a laptop", label: "Product and explainer" },
+    ],
+  },
+
+  // ── Upsell (cross-sell to the ad creative page) ──
+  upsell: {
+    eyebrow: "Running paid ads too?",
+    heading: "Edits that double as ad creative.",
+    body:
+      "The same team produces performance ad creative for Meta, Google and TikTok: hook variations, platform sizes and ad copy, iterated on results. If your videos need to sell, not just get watched, start there.",
+    cta: "See ad creative packages",
+    href: "/lp/ad-creative",
+  },
+
+  // ── FAQ ──
+  faq: {
+    heading: "Questions creators ask before they start",
+    items: [
+      { q: "Is there really no limit on requests?", a: "You can queue as many requests as you like. Your plan sets how many are in production at the same time (1, 3 or 4). The rest wait in line and start the moment a slot frees up." },
+      { q: "What counts as one request?", a: "One deliverable: one long-form video, or one set of shorts cut from one recording. Bundling several distinct videos into one request gets split by your project manager so turnaround stays honest." },
+      { q: "How fast is turnaround?", a: "Short-form in 24-48 hours, long-form in 2-4 business days (we work Monday to Saturday). Priority turnaround on the Creator plan moves your requests to the front of the queue." },
+      { q: "What do you need from us?", a: "Raw footage or recordings in a shared folder, your brand assets, and a short brief per request: goal, audience, tone and any references. Incomplete requests pause in 'needs info' until we have what we need." },
+      { q: "Who owns the videos?", a: "You do. Finished videos and project files are yours once delivered. We ask to showcase work in our portfolio; opt out in writing before the first delivery and we never will." },
+      { q: "Can I pause or cancel?", a: "Yes, any month. Give us a week's notice before your renewal date and the plan pauses or ends. No contracts, no cancellation fees." },
+      { q: "What don't you edit?", a: "Explicit content and wedding albums. Everything else, from fitness reels to 60-minute webinars, is in scope." },
+    ],
+  },
+
+  // ── Final CTA + form ──
+  form: {
+    eyebrow: "Free content review",
+    heading: "Tell us what you publish.",
+    subhead: "Share your channel or links to a few recent videos. We reply within one business day with a short review and the plan we would recommend.",
+    submitText: "Get my free content review",
+    privacy: "We only use your details to reply to this request.",
+    defaultService: "Video Editing",
+    brandLabel: "Channel or website",
+    brandPlaceholder: "youtube.com/@yourchannel",
+    messagePlaceholder: "What you publish, where, and what slows you down. Links to recent videos help.",
+    selectLabel: "How much do you publish?",
+    selectOptions: ["Just getting started", "1-4 videos a month", "5-15 videos a month", "16+ videos a month", "Not sure yet"],
+    needLabel: "What do you need edited?",
+    needOptions: ["Shorts / Reels / TikTok", "Long-form YouTube", "Podcast", "Courses / webinars", "Ads / UGC"],
+  },
+};
+
 export function getLandingPage(slug) {
   return landingPages[slug] || null;
 }

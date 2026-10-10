@@ -11,6 +11,8 @@ export default function CustomCursor() {
   const ringPos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
+    // Touch devices have no hover cursor: skip the render loop entirely.
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
     setMounted(true);
 
     const handleMouseMove = (e) => {

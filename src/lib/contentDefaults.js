@@ -477,8 +477,8 @@ export const defaults = {
       ],
       stalkUsLabel: "Stalk us",
       stalkUsLinks: [
-        { label: "LinkedIn", href: "https://www.linkedin.com/company/scalerstudios" },
-        { label: "Instagram", href: "https://www.instagram.com/scalerstudios" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/scaler-studios/" },
+        { label: "Instagram", href: "https://www.instagram.com/scaler.studios/" },
       ],
       sayHelloLabel: "Say Hello",
       sayHelloEmail: "mridul@scalerstudios.com",

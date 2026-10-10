@@ -36,10 +36,10 @@ export default function Hero() {
       // On mobile, if we want it centered, left should be (innerWidth - startWidth) / 2
       // But actually if startWidth is innerWidth - 48, then left is 24 anyway.
       // If we want it smaller and centered on mobile:
-      const mobileStartWidth = 240;
-      const actualStartWidth = isMobile ? mobileStartWidth : 320;
-      const actualStartHeight = isMobile ? (mobileStartWidth * 9) / 16 : 180;
-      const actualStartLeft = isMobile ? (window.innerWidth - mobileStartWidth) / 2 : 24;
+      // Phones: a full-width 16:9 card so the hero is not mostly empty space.
+      const actualStartWidth = isMobile ? startWidth : 320;
+      const actualStartHeight = isMobile ? startHeight : 180;
+      const actualStartLeft = 24;
 
       gsap.set(videoWrapperRef.current, {
         bottom: 24,
@@ -94,9 +94,9 @@ export default function Hero() {
       {/* TEXT — Centered */}
       <div
         ref={textRef}
-        className="absolute top-[48vh] md:top-[40vh] w-full flex justify-center z-20 pointer-events-none px-6"
+        className="absolute top-[30vh] md:top-[40vh] w-full flex justify-center z-20 pointer-events-none px-6"
       >
-        <h2 className="text-center tracking-tight sm:whitespace-nowrap text-white leading-[1.1]" style={{ fontSize: "clamp(1.2rem, 3.8vw, 3.1rem)", fontFamily: "'Nib Pro', serif", fontWeight: 300 }}>
+        <h2 className="text-center tracking-tight sm:whitespace-nowrap text-white leading-[1.15] md:leading-[1.1]" style={{ fontSize: "clamp(1.9rem, 3.8vw, 3.1rem)", fontFamily: "'Nib Pro', serif", fontWeight: 300 }}>
           {headingBold} {headingItalic}
         </h2>
       </div>

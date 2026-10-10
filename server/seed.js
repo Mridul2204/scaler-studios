@@ -352,8 +352,8 @@ const defaultData = [
           { label: "Clients", href: "/clients" },
         ],
         stalkUsLinks: [
-          { label: "LinkedIn", href: "https://www.linkedin.com/company/scalerstudios" },
-          { label: "Instagram", href: "https://www.instagram.com/scalerstudios" },
+          { label: "LinkedIn", href: "https://www.linkedin.com/company/scaler-studios/" },
+          { label: "Instagram", href: "https://www.instagram.com/scaler.studios/" },
         ],
       },
     },

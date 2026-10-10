@@ -363,11 +363,16 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLightBg, setIsLightBg] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  // Phones: the top-left logo overlapped headings once the page scrolled, so it
+  // fades out after the first screen and comes back near the top.
+  const [hideMobileLogo, setHideMobileLogo] = useState(false);
 
   useEffect(() => {
     setShowCenterLogo(useShortLogoByDefault);
+    setHideMobileLogo(false);
     const unsub = scrollY.on("change", (latest) => {
       setShowCenterLogo(useShortLogoByDefault || latest > 300);
+      setHideMobileLogo(latest > 120);
     });
 
     const footerObserver = new IntersectionObserver(
@@ -430,7 +435,10 @@ export default function Navbar() {
       className="w-full flex items-center justify-between px-4 md:px-8 py-4 md:py-8 pointer-events-none"
       style={{ position: "relative", zIndex: 9999 }}
     >
-      <div className="md:hidden block pointer-events-auto leading-none mt-4 relative h-6 w-40">
+      <div
+        className="md:hidden block leading-none mt-4 relative h-6 w-40 transition-opacity duration-300"
+        style={{ opacity: hideMobileLogo ? 0 : 1, pointerEvents: hideMobileLogo ? "none" : "auto" }}
+      >
         <TransitionLink to="/" className="block w-full h-full relative">
           <div className="relative flex items-center h-full w-full">
             <img
@@ -507,7 +515,17 @@ export default function Navbar() {
       <div className="flex items-center gap-2 pointer-events-auto shrink-0">
         {/* Mobile toggle */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(true)}>
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            aria-label="Open menu"
+            className="w-11 h-11 rounded-full flex items-center justify-center backdrop-blur-md border"
+            style={{
+              color: isLightBg ? "#073624" : "#ffffff",
+              backgroundColor: isLightBg ? "rgba(7,54,36,0.08)" : "rgba(255,255,255,0.12)",
+              borderColor: isLightBg ? "rgba(7,54,36,0.15)" : "rgba(255,255,255,0.2)",
+            }}
+          >
             <MenuIcon isOpen={isOpen} />
           </button>
         </div>

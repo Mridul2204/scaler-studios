@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { usePageContent } from '../hooks/usePageContent';
 import { getContent } from '../lib/content';
 import { defaults } from '../lib/contentDefaults';
+import { useSeo } from '../lib/seo';
 
 gsap.registerPlugin(ScrollTrigger);
 import styles from './Services.module.css';
@@ -19,6 +20,12 @@ const PANEL_VISUALS = [
 ];
 
 export default function Services() {
+  useSeo({
+    title: "Services: Video Editing, Motion Design, Ad Creative, Performance Marketing",
+    description: "Short and long-form video editing, motion graphics and explainers, performance ad creative and Meta and Google ads management, delivered in days.",
+    path: "/services",
+  });
+
   const { sections } = usePageContent("services");
   const heroHeading = getContent(sections, "hero.heading", defaults.services.hero.heading);
   const sidebarLabel = getContent(sections, "sidebar.label", defaults.services.sidebar.label);

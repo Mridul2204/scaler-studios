@@ -4,8 +4,11 @@ import styles from "./Legal.module.css";
 import { usePageContent } from "../hooks/usePageContent";
 import { getContent } from "../lib/content";
 import { defaults } from "../lib/contentDefaults";
+import { useSeo } from "../lib/seo";
 
 export default function Legal() {
+  useSeo({ title: "Legal", description: "Imprint, privacy and cookie information for scalerstudios.com.", path: "/legal" });
+
   useEffect(() => {
     document.body.style.backgroundColor = "#cefad0";
     document.body.style.color = "#073624";

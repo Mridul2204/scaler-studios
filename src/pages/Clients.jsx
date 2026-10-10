@@ -6,6 +6,7 @@ import styles from './Clients.module.css';
 import { usePageContent } from '../hooks/usePageContent';
 import { getContent, getLogoUrl } from '../lib/content';
 import { defaults } from '../lib/contentDefaults';
+import { useSeo } from '../lib/seo';
 
 /* ─── Fade-in wrapper ─── */
 function FadeIn({ children, delay = 0, className }) {
@@ -26,6 +27,12 @@ function FadeIn({ children, delay = 0, className }) {
 
 /* ─── Main ─── */
 export default function Clients() {
+  useSeo({
+    title: "Clients",
+    description: "Brands Scaler Studios has produced creative for, including Verizon, Shopify, Subway, Maersk, Allianz and Bringg.",
+    path: "/clients",
+  });
+
     useLayoutEffect(() => {
         document.body.style.backgroundColor = "#cefad0";
         document.body.style.color = "#073624";

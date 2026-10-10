@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { usePageContent } from '../hooks/usePageContent';
 import { getContent } from '../lib/content';
 import { defaults } from '../lib/contentDefaults';
+import { useSeo } from '../lib/seo';
 
 export default function ComingSoon() {
+  useSeo({ title: "Page not found", noindex: true });
+
     const { sections } = usePageContent("comingSoon");
     const heading = getContent(sections, "heading", defaults.comingSoon.heading);
     const subtitle = getContent(sections, "subtitle", defaults.comingSoon.subtitle);

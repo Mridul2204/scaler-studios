@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import Reveal from "./Reveal";
 import styles from "./Landing.module.css";
 import LandingShell, { scrollToForm, WhatsAppIcon } from "./LandingShell";
@@ -209,6 +209,24 @@ export default function LandingPage() {
               </Reveal>
             ))}
           </div>
+          {packages.more && (
+            <Reveal className="mt-6 rounded-[20px] bg-[#073624] text-[#F4F6F5] p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold tracking-tight">{packages.more.heading}</h3>
+                <p className="mt-2 opacity-80 max-w-[70ch]">{packages.more.text}</p>
+              </div>
+              <button
+                type="button"
+                className={`${styles.btnPrimary} shrink-0`}
+                onClick={() => {
+                  trackEvent("package_click", { package: "custom" });
+                  scrollToForm("package-custom");
+                }}
+              >
+                {packages.more.cta}
+              </button>
+            </Reveal>
+          )}
           <p className="mt-6 text-sm opacity-60">{packages.note}</p>
         </div>
       </section>
@@ -279,16 +297,26 @@ export default function LandingPage() {
             <p className="mt-5 text-lg leading-relaxed opacity-90 max-w-[62ch]">{upsell.body}</p>
           </div>
           <div className="lg:col-span-4 lg:justify-self-end">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-full bg-[#073624] text-white font-bold px-8 py-5 text-lg hover:bg-[#0A2629] transition-colors"
-              onClick={() => {
-                trackEvent("cta_click", { placement: "upsell" });
-                scrollToForm("upsell");
-              }}
-            >
-              {upsell.cta}
-            </button>
+            {upsell.href ? (
+              <Link
+                to={upsell.href}
+                className="inline-flex items-center justify-center rounded-full bg-[#073624] text-white font-bold px-8 py-5 text-lg hover:bg-[#0A2629] transition-colors"
+                onClick={() => trackEvent("cta_click", { placement: "upsell", href: upsell.href })}
+              >
+                {upsell.cta}
+              </Link>
+            ) : (
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-full bg-[#073624] text-white font-bold px-8 py-5 text-lg hover:bg-[#0A2629] transition-colors"
+                onClick={() => {
+                  trackEvent("cta_click", { placement: "upsell" });
+                  scrollToForm("upsell");
+                }}
+              >
+                {upsell.cta}
+              </button>
+            )}
           </div>
         </Reveal>
       </section>

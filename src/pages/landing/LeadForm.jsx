@@ -17,6 +17,14 @@ export default function LeadForm({ config, source }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Qualifier select: label/options come from the page config (ad spend, publishing volume...).
+  const selectLabel = config.selectLabel || "Monthly ad spend";
+  const selectOptions = config.selectOptions || config.adSpendOptions || [];
+  const needLabel = config.needLabel || "What do you need?";
+  const brandLabel = config.brandLabel || "Website or brand";
+  const brandPlaceholder = config.brandPlaceholder || "yourbrand.com";
+  const messagePlaceholder = config.messagePlaceholder || "What are you selling, where are you running ads, what is not working?";
+
   const set = (k) => (e) => setValues((v) => ({ ...v, [k]: e.target.value }));
   const toggleNeed = (n) =>
     setNeeds((prev) => {
@@ -39,8 +47,8 @@ export default function LeadForm({ config, source }) {
           message: values.message,
           services,
           extraFields: [
-            values.brand && { label: "Website or brand", value: values.brand },
-            values.adSpend && { label: "Monthly ad spend", value: values.adSpend },
+            values.brand && { label: brandLabel, value: values.brand },
+            values.adSpend && { label: selectLabel, value: values.adSpend },
             needs.size > 0 && { label: "Needs", value: Array.from(needs).join(", ") },
           ].filter(Boolean),
         },
@@ -69,23 +77,23 @@ export default function LeadForm({ config, source }) {
           <input id="lp-phone" className={styles.input} type="tel" autoComplete="tel" placeholder="+1 555 000 0000" value={values.phone} onChange={set("phone")} />
         </div>
         <div>
-          <label className={styles.label} htmlFor="lp-brand">Website or brand</label>
-          <input id="lp-brand" className={styles.input} type="text" autoComplete="organization" placeholder="yourbrand.com" value={values.brand} onChange={set("brand")} />
+          <label className={styles.label} htmlFor="lp-brand">{brandLabel}</label>
+          <input id="lp-brand" className={styles.input} type="text" autoComplete="organization" placeholder={brandPlaceholder} value={values.brand} onChange={set("brand")} />
         </div>
       </div>
 
       <div>
-        <label className={styles.label} htmlFor="lp-spend">Monthly ad spend</label>
+        <label className={styles.label} htmlFor="lp-spend">{selectLabel}</label>
         <select id="lp-spend" className={`${styles.input} ${styles.select}`} required value={values.adSpend} onChange={set("adSpend")}>
           <option value="" disabled>Select a range</option>
-          {config.adSpendOptions.map((o) => (
+          {selectOptions.map((o) => (
             <option key={o} value={o}>{o}</option>
           ))}
         </select>
       </div>
 
       <div>
-        <span className={styles.label}>What do you need?</span>
+        <span className={styles.label}>{needLabel}</span>
         <div className="flex flex-wrap gap-2">
           {config.needOptions.map((n) => {
             const active = needs.has(n);
@@ -100,7 +108,7 @@ export default function LeadForm({ config, source }) {
 
       <div>
         <label className={styles.label} htmlFor="lp-message">Anything else? (optional)</label>
-        <textarea id="lp-message" className={styles.input} rows="3" placeholder="What are you selling, where are you running ads, what is not working?" value={values.message} onChange={set("message")} />
+        <textarea id="lp-message" className={styles.input} rows="3" placeholder={messagePlaceholder} value={values.message} onChange={set("message")} />
       </div>
 
       {/* Honeypot: hidden from people, filled by bots */}

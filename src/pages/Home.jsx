@@ -1,7 +1,7 @@
 import { useLayoutEffect, useEffect } from "react";
 import Hero, { HeroTopText } from "../components/sections/Hero";
 import AboutSection from "../components/sections/About";
-import ServiceBlock, { StrategyVideo, VisualImage, WebsiteImage, ProductImage } from "../components/sections/Services";
+import ServiceBlock, { PanelVisual } from "../components/sections/Services";
 import StackContainer from "../components/layout/StackContainer";
 import Works from "../components/sections/Works";
 import Insights from "../components/sections/Insights";
@@ -15,13 +15,6 @@ import { defaults } from "../lib/contentDefaults";
 import { useSeo } from "../lib/seo";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const PANEL_VISUALS = [
-  <StrategyVideo key="0" />,
-  <VisualImage key="1" />,
-  <WebsiteImage key="2" />,
-  <ProductImage key="3" />,
-];
 
 export default function Home() {
   useSeo({
@@ -121,7 +114,7 @@ export default function Home() {
           title={panel.title}
           description={panel.description}
           list={items}
-          imageContent={PANEL_VISUALS[i % PANEL_VISUALS.length]}
+          imageContent={<PanelVisual title={panel.title} />}
           textColor={panel.textColor || "text-[#fbf0f2]"}
           videoUrl={panel.videoUrl}
           imageUrl={panel.imageUrl}

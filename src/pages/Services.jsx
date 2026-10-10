@@ -10,14 +10,7 @@ import { useSeo } from '../lib/seo';
 gsap.registerPlugin(ScrollTrigger);
 import styles from './Services.module.css';
 import StackContainer from '../components/layout/StackContainer';
-import ServiceBlock, { StrategyVideo, VisualImage, WebsiteImage, ProductImage } from '../components/sections/Services';
-
-const PANEL_VISUALS = [
-  <StrategyVideo key="0" />,
-  <VisualImage key="1" />,
-  <WebsiteImage key="2" />,
-  <ProductImage key="3" />,
-];
+import ServiceBlock, { PanelVisual } from '../components/sections/Services';
 
 export default function Services() {
   useSeo({
@@ -48,7 +41,7 @@ export default function Services() {
           title={panel.title}
           description={panel.description}
           list={items}
-          imageContent={PANEL_VISUALS[i % PANEL_VISUALS.length]}
+          imageContent={<PanelVisual title={panel.title} />}
           textColor={panel.textColor || "text-[#020817]"}
           videoUrl={panel.videoUrl}
           imageUrl={panel.imageUrl}

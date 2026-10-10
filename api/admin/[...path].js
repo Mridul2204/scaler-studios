@@ -233,9 +233,29 @@ const ContactSubmissionSchema = new mongoose.Schema(
     phone: { type: String, default: "" },
     services: { type: [String], default: [] },
     message: { type: String, default: "" },
+    // Which form/page produced the lead, e.g. "lp-ad-creative", "contact-modal"
+    source: { type: String, default: "" },
+    // Extra answers from the form, e.g. [{ label: "Monthly ad spend", value: "$5k-$20k" }]
+    extraFields: { type: [{ label: String, value: String }], default: [] },
+    // UTM tags, click IDs, landing page and referrer captured in the browser
+    attribution: { type: mongoose.Schema.Types.Mixed, default: {} },
   },
-  { timestamps: true }
+  { timestamps: true, minimize: false }
 );
+
+// Escape user input before it goes into the notification email HTML.
+function esc(v) {
+  return String(v ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+const ATTRIBUTION_KEYS = [
+  "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
+  "gclid", "gbraid", "wbraid", "fbclid", "ttclid", "landing_page", "referrer", "page",
+];
 
 const ContactSubmission =
   mongoose.models.ContactSubmission ||
@@ -244,35 +264,66 @@ const ContactSubmission =
 // POST contact submission
 app.post("/api/admin/contact", async (req, res) => {
   try {
-    const { name, email, phone, services, message } = req.body;
-    
+    const body = req.body || {};
+    const name = String(body.name || "").trim().slice(0, 200);
+    const email = String(body.email || "").trim().slice(0, 200);
+    const phone = String(body.phone || "").trim().slice(0, 50);
+    const message = String(body.message || "").trim().slice(0, 5000);
+    const source = String(body.source || "").trim().slice(0, 100);
+    const services = Array.isArray(body.services) ? body.services.map((s) => String(s).slice(0, 100)).slice(0, 20) : [];
+    const extraFields = Array.isArray(body.extraFields)
+      ? body.extraFields
+          .filter((f) => f && (f.label || f.value))
+          .map((f) => ({ label: String(f.label || "").slice(0, 100), value: String(f.value || "").slice(0, 500) }))
+          .slice(0, 20)
+      : [];
+    const attribution = {};
+    if (body.attribution && typeof body.attribution === "object") {
+      for (const k of ATTRIBUTION_KEYS) {
+        if (body.attribution[k]) attribution[k] = String(body.attribution[k]).slice(0, 300);
+      }
+    }
+
+    // Honeypot: the "website" field is invisible to people. Bots fill it.
+    // Answer as if it worked so they do not retry, but store nothing.
+    if (body.website) return res.status(201).json({ success: true });
+
+    if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ error: "Please add your name and a valid email." });
+    }
+
     // Save to database
-    const submission = new ContactSubmission({
-      name,
-      email,
-      phone,
-      services: services || [],
-      message
-    });
+    const submission = new ContactSubmission({ name, email, phone, services, message, source, extraFields, attribution });
     await submission.save();
+
+    const row = (label, value) =>
+      `<tr><td style="padding: 8px 0; font-weight: bold; width: 140px; vertical-align: top;">${esc(label)}:</td><td style="padding: 8px 0;">${value}</td></tr>`;
+    const extraRows = extraFields.map((f) => row(f.label || "Info", esc(f.value))).join("");
+    const attrRows = Object.entries(attribution)
+      .map(([k, v]) => `<div><span style="opacity:.7">${esc(k)}:</span> ${esc(v)}</div>`)
+      .join("");
 
     const { error: emailError } = await resend.emails.send({
       from: "Scaler Studios <noreply@updates.scalerstudios.com>",
       to: ["mridul@scalerstudios.com"],
-      subject: `New Lead Submitted: ${name}`,
+      replyTo: email,
+      subject: `New Lead${source ? ` (${source})` : ""}: ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 8px; background-color: #fbf0f2; color: #020817;">
           <h2 style="color: #020817; border-bottom: 2px solid #020817; padding-bottom: 10px; margin-bottom: 20px;">New Form Submission Received</h2>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-            <tr><td style="padding: 8px 0; font-weight: bold; width: 120px;">Name:</td><td style="padding: 8px 0;">${name}</td></tr>
-            <tr><td style="padding: 8px 0; font-weight: bold;">Email:</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #2B59C3; text-decoration: none;">${email}</a></td></tr>
-            ${phone ? `<tr><td style="padding: 8px 0; font-weight: bold;">Phone:</td><td style="padding: 8px 0;">${phone}</td></tr>` : ''}
-<tr><td style="padding: 8px 0; font-weight: bold;">Services:</td><td style="padding: 8px 0;">${services && services.length > 0 ? services.map(s => `<span style="display:inline-block;background:#020817;color:#fff;padding:2px 8px;border-radius:12px;font-size:11px;margin-right:4px;">${s}</span>`).join("") : "None selected"}</td></tr>
+            ${row("Name", esc(name))}
+            ${row("Email", `<a href="mailto:${esc(email)}" style="color: #2B59C3; text-decoration: none;">${esc(email)}</a>`)}
+            ${phone ? row("Phone", `${esc(phone)} <a href="https://wa.me/${esc(phone.replace(/\D/g, ""))}" style="color: #2B59C3;">(WhatsApp)</a>`) : ""}
+            ${row("Services", services.length > 0 ? services.map((s) => `<span style="display:inline-block;background:#020817;color:#fff;padding:2px 8px;border-radius:12px;font-size:11px;margin-right:4px;">${esc(s)}</span>`).join("") : "None selected")}
+            ${extraRows}
+            ${source ? row("Source", esc(source)) : ""}
           </table>
           <div style="background-color: #fff; padding: 15px; border-radius: 6px; border: 1px solid #eaeaea; margin-top: 15px;">
             <h4 style="margin-top: 0; color: #020817; margin-bottom: 8px;">Message:</h4>
-            <p style="margin: 0; line-height: 1.5; white-space: pre-wrap;">${message || "No message provided"}</p>
+            <p style="margin: 0; line-height: 1.5; white-space: pre-wrap;">${message ? esc(message) : "No message provided"}</p>
           </div>
+          ${attrRows ? `<div style="font-size: 11px; color: #555; margin-top: 15px; line-height: 1.6;"><strong>Where this lead came from</strong>${attrRows}</div>` : ""}
           <p style="font-size: 11px; color: #666; margin-top: 30px; border-top: 1px solid #eaeaea; padding-top: 10px; text-align: center;">Saved to your admin portal database.</p>
         </div>
       `
@@ -281,9 +332,10 @@ app.post("/api/admin/contact", async (req, res) => {
     if (emailError) console.error("Resend error:", emailError);
     else console.log("Notification email sent via Resend");
 
-    res.status(201).json({ success: true, submission });
+    res.status(201).json({ success: true, id: submission._id });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Contact submission failed:", err);
+    res.status(500).json({ error: "Could not save your message. Please try again." });
   }
 });
 

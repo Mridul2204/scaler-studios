@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin-scalerstudios
+Disallow: /api/
+Disallow: /thank-you
+
+Sitemap: https://www.scalerstudios.com/sitemap.xml

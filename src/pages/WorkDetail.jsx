@@ -8,6 +8,7 @@ import styles from './WorkDetail.module.css';
 import { usePageContent } from '../hooks/usePageContent';
 import { getContent } from '../lib/content';
 import { defaults } from '../lib/contentDefaults';
+import { useSeo } from '../lib/seo';
 
 // Render inline markdown: **bold**, *italic*, __bold__, _italic_
 function renderInline(text) {
@@ -76,7 +77,7 @@ export default function WorkDetail() {
   const ctaReview = getContent(homeSections, "cta.right", defaults.home.cta.right);
 
   const projects = useMemo(() => {
-    const cms = (workSections?.projects || [])
+    const cms = getContent(workSections, "projects", defaults.work.projects)
       .filter((p) => p && p.title)
       .map((p) => ({
         slug: p.slug || p.title.toLowerCase().replace(/\s+/g, '-'),
@@ -100,6 +101,14 @@ export default function WorkDetail() {
   }, [workSections]);
 
   const project = projects.find((p) => p.slug === slug);
+
+  useSeo({
+    title: project ? `${project.title}: ${project.subtitle || project.category}` : "Work",
+    description: project?.description,
+    image: project?.image ? (project.image.startsWith("http") ? project.image : `https://www.scalerstudios.com${project.image}`) : undefined,
+    path: `/work/${slug}`,
+    type: "article",
+  });
 
   useLayoutEffect(() => {
     document.body.style.backgroundColor = "#cefad0";

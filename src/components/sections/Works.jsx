@@ -16,7 +16,7 @@ export default function Works() {
   const headingItalic = getContent(sections, "works.headingItalic", defaults.home.works.headingItalic);
   const ctaText = getContent(sections, "works.ctaText", defaults.home.works.ctaText);
 
-  const cmsRawProjects = getContent(workSections, "projects", []);
+  const cmsRawProjects = getContent(workSections, "projects", defaults.work.projects);
   const featured = useMemo(() => {
     const cmsProjects = cmsRawProjects
       .filter(p => p.title)

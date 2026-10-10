@@ -40,3 +40,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build output (Vercel builds from source)
+/dist
+
+# local QA scripts and scratch
+/.tmp-qa
+
+# legacy local server deps
+/server/node_modules

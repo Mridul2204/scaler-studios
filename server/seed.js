@@ -273,7 +273,7 @@ const defaultData = [
       info: {
         location: { title: "Visit Us", addressLine1: "", addressLine2: "", regions: "" },
         phone: { title: "Call Us", number: "", hours: "Mon - Fri, 9am - 6pm" },
-        email: { title: "Email Us", address: "studio@scalerstudios.com", response: "We'll respond within 24 hours" },
+        email: { title: "Email Us", address: "mridul@scalerstudios.com", response: "We'll respond within 24 hours" },
       },
       form: {
         label: "Get in touch",
@@ -301,7 +301,7 @@ const defaultData = [
     sections: {
       hero: { heading: "Legal", lastUpdated: "Last updated: 2026" },
       sections: [
-        { heading: "Imprint", content: "Scaler Studios", email: "studio@scalerstudios.com" },
+        { heading: "Imprint", content: "Scaler Studios", email: "mridul@scalerstudios.com" },
         { heading: "Privacy", content: "We respect your privacy. Personal data submitted through forms on this site is used solely to respond to your inquiry and is never sold or shared with third parties for marketing purposes. To request deletion or export of your data, contact us at the email above." },
         { heading: "Cookies", content: "This site uses essential cookies for routing and accessibility. We do not use third-party tracking cookies. Analytics, when enabled, are anonymized and aggregated." },
         { heading: "Intellectual Property", content: "All content, branding, and design assets on this site are the property of Scaler Studios or our clients. Unauthorized reproduction is prohibited." },
@@ -325,9 +325,9 @@ const defaultData = [
         menuButton: "Menu",
         contactButton: "Contact",
         sayHelloLabel: "Say hello",
-        sayHelloEmail: "studio@scalerstudios.com",
+        sayHelloEmail: "mridul@scalerstudios.com",
         talentLabel: "Join the team?",
-        talentEmail: "studio@scalerstudios.com",
+        talentEmail: "mridul@scalerstudios.com",
         menu: [
           { label: "Work", href: "/work" },
           { label: "About", href: "/about" },
@@ -339,7 +339,7 @@ const defaultData = [
         exploreLabel: "Explore",
         stalkUsLabel: "Stalk us",
         sayHelloLabel: "Say Hello",
-        sayHelloEmail: "studio@scalerstudios.com",
+        sayHelloEmail: "mridul@scalerstudios.com",
         callUsLabel: "Call us",
         callUsPhone: "",
         copyright: "© 2020–2026 Scaler Studios",

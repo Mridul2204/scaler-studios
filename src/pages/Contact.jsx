@@ -5,6 +5,9 @@ import styles from './Contact.module.css';
 import { usePageContent } from '../hooks/usePageContent';
 import { getContent } from '../lib/content';
 import { defaults } from '../lib/contentDefaults';
+import { submitLead } from '../lib/leads';
+import { useSeo } from '../lib/seo';
+import { whatsappUrl, mailtoUrl, toDigits, WHATSAPP_DIGITS } from '../lib/contactInfo';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -35,8 +38,15 @@ function AnimatedSection({ children, className, delay = 0 }) {
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [focused, setFocused] = useState(null);
   const formRef = useRef(null);
+
+  useSeo({
+    title: 'Contact',
+    description: 'Tell us about your project. Video editing, motion design, ad creative and performance marketing from Scaler Studios. Replies within one business day.',
+    path: '/contact',
+  });
 
   const { sections } = usePageContent("contact");
   const hero = getContent(sections, "hero", defaults.contact.hero);
@@ -53,26 +63,25 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
     const data = new FormData(e.target);
-    const payload = {
-      name: data.get('name') || '',
-      email: data.get('email') || '',
-      phone: data.get('company') || '',
-      message: data.get('message') || '',
-      services: [],
-    };
     try {
-      const res = await fetch('/api/admin/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error('Server error');
+      await submitLead(
+        {
+          name: data.get('name') || '',
+          email: data.get('email') || '',
+          message: data.get('message') || '',
+          services: [],
+          extraFields: data.get('company') ? [{ label: 'Company', value: data.get('company') }] : [],
+        },
+        { source: 'contact-page', honeypot: data.get('website') || '' }
+      );
+      setSubmitted(true);
     } catch (err) {
       console.error('Contact form error:', err);
+      setError('Your message could not be sent. Please try again, or reach us on WhatsApp or email below.');
     }
     setLoading(false);
-    setSubmitted(true);
   };
 
   return (
@@ -142,7 +151,7 @@ export default function Contact() {
           </div>
           <h3 className={styles.infoCardTitle}>{info.phone.title}</h3>
           <p className={styles.infoCardText}>
-            <a href={`tel:${info.phone.number.replace(/[^+\d]/g, '')}`}>{info.phone.number}</a>
+            <a href={whatsappUrl(undefined, toDigits(info.phone.number) || WHATSAPP_DIGITS)} target="_blank" rel="noopener noreferrer">{info.phone.number}</a>
           </p>
           <p className={styles.infoCardMuted}>{info.phone.hours}</p>
         </AnimatedSection>
@@ -156,7 +165,7 @@ export default function Contact() {
           </div>
           <h3 className={styles.infoCardTitle}>{info.email.title}</h3>
           <p className={styles.infoCardText}>
-            <a href={`mailto:${info.email.address}`}>{info.email.address}</a>
+            <a href={mailtoUrl(undefined, info.email.address)}>{info.email.address}</a>
           </p>
           <p className={styles.infoCardMuted}>{info.email.response}</p>
         </AnimatedSection>
@@ -260,6 +269,21 @@ export default function Contact() {
                     {form.checkboxLabel}
                   </label>
                 </div>
+
+                {/* Honeypot: hidden from people, filled by bots */}
+                <div style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }} aria-hidden="true">
+                  <label htmlFor="contact-website">Website</label>
+                  <input type="text" id="contact-website" name="website" tabIndex="-1" autoComplete="off" />
+                </div>
+
+                {error && (
+                  <p role="alert" style={{ color: '#b42318', fontSize: '0.95rem', margin: '0 0 1rem', lineHeight: 1.5 }}>
+                    {error}{' '}
+                    <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>WhatsApp</a>
+                    {' · '}
+                    <a href={mailtoUrl()} style={{ textDecoration: 'underline' }}>Email</a>
+                  </p>
+                )}
 
                 <button type="submit" className={styles.submitBtn} id="contact-submit" disabled={loading}>
                   {loading ? (

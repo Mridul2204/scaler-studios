@@ -7,6 +7,7 @@ import styles from './WorkDetail.module.css';
 import { usePageContent } from '../hooks/usePageContent';
 import { getContent } from '../lib/content';
 import { defaults } from '../lib/contentDefaults';
+import { useSeo } from '../lib/seo';
 
 function renderInline(text) {
   const parts = [];
@@ -118,6 +119,14 @@ export default function InsightDetail() {
   }, [article]);
 
   const bodyBlocks = useMemo(() => parseBody(article?.body || ''), [article]);
+
+  useSeo({
+    title: article?.title || "Insights",
+    description: article?.subtitle || (article?.body ? article.body.replace(/^#+.*$/gm, '').replace(/\s+/g, ' ').trim().slice(0, 155) : undefined),
+    image: article?.heroImage || undefined,
+    path: `/insights/${slug}`,
+    type: "article",
+  });
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);

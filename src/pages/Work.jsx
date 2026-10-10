@@ -6,8 +6,15 @@ import styles from './Work.module.css';
 import { usePageContent } from '../hooks/usePageContent';
 import { getContent } from '../lib/content';
 import { defaults } from '../lib/contentDefaults';
+import { useSeo } from '../lib/seo';
 
 export default function Work() {
+  useSeo({
+    title: "Work",
+    description: "Selected projects from Scaler Studios: corporate films for Verizon, Shopify and Bringg, a data-led social film for Subway, and performance ad creative for DTC brands.",
+    path: "/work",
+  });
+
   const [activeTab, setActiveTab] = useState('Featured');
   const [hoveredSlug, setHoveredSlug] = useState(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
@@ -39,7 +46,7 @@ export default function Work() {
 
   const { sections } = usePageContent("work");
   const tabs = getContent(sections, "tabs", defaults.work.tabs);
-  const cmsRawProjects = getContent(sections, "projects", []);
+  const cmsRawProjects = getContent(sections, "projects", defaults.work.projects);
   const cmsProjects = useMemo(
     () =>
       cmsRawProjects

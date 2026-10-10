@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ContactModal.module.css';
+import { submitLead } from '../../lib/leads';
+import { whatsappUrl, mailtoUrl } from '../../lib/contactInfo';
 
 const SERVICE_OPTIONS = ['Video Editing', 'Motion Design', 'Ad Creative', 'Marketing', 'Other'];
 
@@ -23,6 +25,8 @@ export default function ContactModal({ isOpen, onClose }) {
     const [message, setMessage] = useState(INITIAL.message);
     const [stage, setStage] = useState(INITIAL.stage);
     const [extraFields, setExtraFields] = useState([]);
+    const [error, setError] = useState('');
+    const [honeypot, setHoneypot] = useState('');
     const prevOverflow = useRef('');
 
     const isPristine =
@@ -55,6 +59,8 @@ export default function ContactModal({ isOpen, onClose }) {
     // Reset state whenever the modal closes so re-opening is clean.
     useEffect(() => {
         if (!isOpen) {
+            setError('');
+            setHoneypot('');
             setServices(new Set());
             setName('');
             setEmail('');
@@ -99,25 +105,26 @@ export default function ContactModal({ isOpen, onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStage('loading');
-        const payload = {
-            services: Array.from(services),
-            name,
-            email,
-            phone,
-            message,
-            extraFields: extraFields.filter((f) => f.label || f.value),
-        };
+        setError('');
         try {
-            const res = await fetch('/api/admin/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-            });
-            if (!res.ok) throw new Error('Server error');
+            await submitLead(
+                {
+                    services: Array.from(services),
+                    name,
+                    email,
+                    phone,
+                    message,
+                    extraFields: extraFields.filter((f) => f.label || f.value),
+                },
+                { source: 'contact-modal', honeypot }
+            );
+            setStage('submitted');
         } catch (err) {
             console.error('Error submitting form:', err);
+            // Back to the form with the details intact, so nothing is lost.
+            setError('Your request could not be sent. Please try again, or message us on WhatsApp.');
+            setStage('form');
         }
-        setStage('submitted');
     };
 
     const handleBackdropClick = () => {
@@ -288,6 +295,29 @@ export default function ContactModal({ isOpen, onClose }) {
                                                     ))}
                                                 </div>
                                             </div>
+                                        )}
+
+                                        {/* Honeypot: hidden from people, filled by bots */}
+                                        <div style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }} aria-hidden="true">
+                                            <label htmlFor="contact-modal-website">Website</label>
+                                            <input
+                                                type="text"
+                                                id="contact-modal-website"
+                                                name="website"
+                                                tabIndex="-1"
+                                                autoComplete="off"
+                                                value={honeypot}
+                                                onChange={(e) => setHoneypot(e.target.value)}
+                                            />
+                                        </div>
+
+                                        {error && (
+                                            <p role="alert" style={{ color: '#b42318', fontSize: '0.9rem', margin: '0 0 12px', lineHeight: 1.5, fontFamily: "'PP Mori', sans-serif" }}>
+                                                {error}{' '}
+                                                <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>Open WhatsApp</a>
+                                                {' · '}
+                                                <a href={mailtoUrl()} style={{ textDecoration: 'underline' }}>Email us</a>
+                                            </p>
                                         )}
 
                                         <div className={styles.footerRow}>

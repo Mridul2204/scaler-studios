@@ -12,6 +12,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePageContent } from "../hooks/usePageContent";
 import { getContent } from "../lib/content";
 import { defaults } from "../lib/contentDefaults";
+import { useSeo } from "../lib/seo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,12 @@ const PANEL_VISUALS = [
 ];
 
 export default function Home() {
+  useSeo({
+    title: "Video Editing, Motion Design & Ad Creative Agency",
+    description: "Scaler Studios builds video, motion and ad creative for brands that need to move fast and convert. Trusted by Verizon, Shopify, Subway and 1,750+ clients worldwide.",
+    path: "/",
+  });
+
   const { sections } = usePageContent("home");
 
   useEffect(() => {

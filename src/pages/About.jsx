@@ -6,6 +6,7 @@ import styles from './About.module.css';
 import { usePageContent } from '../hooks/usePageContent';
 import { getContent } from '../lib/content';
 import { defaults } from '../lib/contentDefaults';
+import { useSeo } from '../lib/seo';
 
 const randomImages = [
   "https://picsum.photos/id/1015/500/400",
@@ -19,6 +20,12 @@ const randomImages = [
 ];
 
 export default function About() {
+  useSeo({
+    title: "About",
+    description: "Scaler Studios is a remote team of editors, motion designers and performance marketers founded in 2020. Fiverr Pro vetted, rated 4.9 by 1,750+ clients.",
+    path: "/about",
+  });
+
   const [trail, setTrail] = useState([]);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const lastPos = useRef({ x: 0, y: 0 });

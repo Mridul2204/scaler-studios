@@ -1233,9 +1233,26 @@ export default function AdminPanel() {
                         ))}
                       </div>
                     )}
+                    {lead.extraFields && lead.extraFields.length > 0 && (
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.5rem', fontSize: '0.85rem' }}>
+                        {lead.extraFields.map((f, i) => (
+                          <div key={i} style={{ background: '#0f172a', padding: '0.5rem 0.75rem', borderRadius: '8px' }}>
+                            <span style={{ opacity: 0.5 }}>{f.label}: </span>{f.value}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     {lead.message && (
                       <div style={{ background: '#0f172a', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', fontSize: '0.95rem', whiteSpace: 'pre-wrap', lineHeight: '1.5', opacity: 0.9 }}>
                         {lead.message}
+                      </div>
+                    )}
+                    {(lead.source || (lead.attribution && Object.keys(lead.attribution).length > 0)) && (
+                      <div style={{ fontSize: '0.75rem', opacity: 0.55, display: 'flex', flexWrap: 'wrap', gap: '0.25rem 1rem' }}>
+                        {lead.source && <span>source: {lead.source}</span>}
+                        {Object.entries(lead.attribution || {}).map(([k, v]) => (
+                          <span key={k}>{k}: {String(v)}</span>
+                        ))}
                       </div>
                     )}
                   </div>

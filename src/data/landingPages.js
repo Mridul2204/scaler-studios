@@ -399,6 +399,213 @@ landingPages["video-editing"] = {
   },
 };
 
+// SaaS explainer page: the landing page for the cold email campaign
+// "SaaS Explainers" (free script offer). Packages match the outbound playbook.
+landingPages["saas-explainers"] = {
+  // ── Meta / SEO ──
+  seo: {
+    title: "Animated Explainer Videos for SaaS Startups",
+    description:
+      "Animated explainer videos for SaaS products, from $2,500. Get a free script and the first storyboard frames within 48 hours, no call needed.",
+    noindex: false,
+  },
+  source: "lp-saas-explainers",
+  showPrices: true,
+  whatsappMessage: "Hi Mridul, I came from your SaaS explainer page and want to talk about a video for our product.",
+  emailSubject: "SaaS explainer enquiry",
+  thankYou: {
+    body: "Mridul will send your free script and the first storyboard frames within 48 hours.",
+  },
+
+  // ── Hero ──
+  hero: {
+    eyebrow: "Animated explainer videos for SaaS startups",
+    headline: "Show what your product does",
+    headlineAccent: "in 60 seconds.",
+    subhead:
+      "We script, storyboard and animate explainer videos for software products. Send us your site and we will write your script and sketch the first frames, free, within 48 hours.",
+    primaryCta: "Get a free script",
+    secondaryCta: "Watch samples",
+    secondaryHref: "#work",
+    videoUrl: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/video.mp4",
+    bullets: [
+      "Free script and first frames in 48 hours",
+      "You approve every stage before we animate",
+      "Fixed price, 50% on script approval",
+    ],
+  },
+
+  trust: {
+    label: "Videos delivered for",
+    logos: [
+      { name: "Verizon", src: "/scaler-img/verizon-logo.png" },
+      { name: "Shopify", src: "/scaler-img/shopify-logo.png" },
+      { name: "Subway", src: "/scaler-img/subway-logo.png" },
+      { name: "Maersk", src: "/scaler-img/maersk-logo.png" },
+      { name: "Allianz", src: "/scaler-img/allianz-logo.png" },
+      { name: "Bringg", src: "/scaler-img/bringg.png" },
+    ],
+  },
+
+  // ── Work: playable samples (youtubeId plays inline; videoUrl is a
+  // self-hosted mp4, e.g. ImageKit; href opens an external player) ──
+  work: {
+    heading: "Recent work",
+    subhead: "Explainers and motion pieces made by the team that will make yours.",
+    items: [
+      { label: "Eve.ai", kind: "Product explainer", duration: "1:19", href: "https://f.io/_b0lNMvQ" },
+      { label: "Venterr", kind: "Corporate explainer", duration: "1:12", href: "https://f.io/NNL1S5DV" },
+      { label: "Gumlet", kind: "SaaS product promo", duration: "0:30", youtubeId: "uLcEsdQRATQ" },
+      { label: "DAC", kind: "Brand motion graphics", duration: "0:33", youtubeId: "tNcpwhmDOsU" },
+    ],
+  },
+
+  // ── Problem ──
+  problem: {
+    heading: "Your homepage has seconds to explain the product.",
+    body:
+      "Most SaaS homepages ask visitors to read their way to understanding: a tagline, a feature grid, a screenshot. A short explainer does that work in about a minute, and it keeps working on your homepage, in sales emails, on demo calls, in onboarding and in ads.",
+    points: [
+      { title: "One minute, one clear story", text: "Problem, product, outcome. A tight script forces the message your whole site should be saying." },
+      { title: "Made once, used everywhere", text: "The same video runs on your homepage, in outbound, on demo calls and, cut down, in your ads." },
+      { title: "Your product as it really is", text: "We animate your real interface from screenshots or a demo account, styled to your brand." },
+    ],
+  },
+
+  // ── Deliverables ──
+  deliverables: {
+    heading: "What every explainer includes",
+    items: [
+      { title: "Script", text: "Written by us from your site and a short kickoff call. You approve it before anything is drawn." },
+      { title: "Storyboard", text: "A frame for every scene, so you see the whole video before animation starts." },
+      { title: "Voiceover", text: "A professional voice in the accent that fits your market." },
+      { title: "Animation", text: "2D motion graphics in your brand colours and type, with your product UI recreated in motion." },
+      { title: "Music and sound", text: "Licensed music and sound design, mixed for the web." },
+      { title: "Ad cutdowns", text: "On Launch Kit and Full Funnel: short 9:16 and 1:1 versions with captions, ready for LinkedIn and Meta." },
+    ],
+  },
+
+  // ── Packages (match the outbound playbook; prices in USD) ──
+  packages: {
+    heading: "One fixed price. No surprises.",
+    subhead: "Pick the package that fits your launch. You pay 50% when you approve the script and 50% on delivery.",
+    note: "Prices in USD. Voiceover, licensed music and 2 revision rounds per stage are included in every package. Timelines start when you approve the script.",
+    tiers: [
+      {
+        name: "Starter",
+        price: "$2,500",
+        period: "one-time",
+        tagline: "For a homepage or product page explainer",
+        features: [
+          "60-second 2D motion graphics explainer",
+          "Script and storyboard by our team",
+          "Professional voiceover and licensed music",
+          "2 revision rounds per stage",
+          "Delivered in 3 weeks",
+        ],
+        cta: "Start with Starter",
+        highlight: false,
+      },
+      {
+        name: "Launch Kit",
+        price: "$3,500",
+        period: "one-time",
+        tagline: "For a launch that needs the explainer and the ads",
+        features: [
+          "90-second explainer",
+          "3 ad cutdowns in 9:16 and 1:1, captioned",
+          "Script, storyboard, voiceover and music",
+          "2 revision rounds per stage",
+          "Delivered in 3 weeks",
+        ],
+        cta: "Start with Launch Kit",
+        highlight: true,
+        badge: "Best for launches",
+      },
+      {
+        name: "Full Funnel",
+        price: "$4,000",
+        period: "one-time",
+        tagline: "For teams running paid acquisition",
+        features: [
+          "90-second explainer",
+          "5 ad cutdowns, captioned",
+          "15-second homepage loop",
+          "Source files included",
+          "Delivered in 4 weeks",
+        ],
+        cta: "Start with Full Funnel",
+        highlight: false,
+      },
+    ],
+  },
+
+  // ── Process ──
+  process: {
+    heading: "How it works",
+    steps: [
+      { n: "01", title: "Free script", text: "Send your website. Within 48 hours you get a 60 to 90 second script and the first 3-4 storyboard frames. No call needed." },
+      { n: "02", title: "Kickoff", text: "If you like the direction, a 20-minute call locks the message, the voice and the package. You pay 50% once the script is approved." },
+      { n: "03", title: "Storyboard and voice", text: "Every scene gets a frame and the voiceover is recorded. You approve both before animation starts." },
+      { n: "04", title: "Animation and delivery", text: "We animate, add music and sound, and deliver files sized for your homepage, demos and ads. The other 50% is due on delivery." },
+    ],
+  },
+
+  // ── Proof ──
+  proof: {
+    heading: "What clients say",
+    subhead: "Reviews from verified orders on our Fiverr Pro agency profile.",
+  },
+
+  // ── Upsell (cross-sell to the ad creative page) ──
+  upsell: {
+    eyebrow: "After the launch",
+    heading: "Turn your explainer into ads.",
+    body:
+      "The same team produces ad creative for Meta, Google and LinkedIn. Your explainer becomes hooks, cutdowns and statics, refreshed as the results come in.",
+    cta: "See ad creative packages",
+    href: "/lp/ad-creative",
+  },
+
+  // ── FAQ ──
+  faq: {
+    heading: "Questions founders ask first",
+    items: [
+      { q: "What exactly is free?", a: "A 60 to 90 second script written for your product, plus the first 3-4 storyboard frames, within 48 hours of your request. No call and no obligation. If you don't go ahead, you keep the script." },
+      { q: "Why would you write a script for free?", a: "It is the fastest way for you to judge our thinking before you spend anything. We write a limited number each week, for companies with a live product." },
+      { q: "How long does a video take?", a: "Three weeks for Starter and Launch Kit, four weeks for Full Funnel, counted from script approval. Tell us your launch date and we plan backwards from it." },
+      { q: "What do you need from us?", a: "Your website, a product walkthrough or demo login, your brand assets and 20 minutes for a kickoff call. We write, you approve." },
+      { q: "Can you show our actual product?", a: "Yes. We recreate your interface in motion graphics from screenshots or a demo account, so it looks sharp and is easy to update when the product changes." },
+      { q: "Who owns the video?", a: "You do. The final files are yours on delivery, and Full Funnel includes the source files." },
+      { q: "How does payment work?", a: "Prices are fixed and in USD. You pay 50% when you approve the script and 50% when the video is delivered." },
+    ],
+  },
+
+  // ── Final CTA + form ──
+  form: {
+    eyebrow: "Free script",
+    heading: "Get your free script.",
+    subhead: "Share your product website. Within 48 hours we send a 60 to 90 second script and the first storyboard frames. No call needed.",
+    submitText: "Send me my free script",
+    privacy: "We only use your details to reply to this request.",
+    defaultService: "SaaS Explainer",
+    brandLabel: "Product website",
+    brandPlaceholder: "yourproduct.com",
+    messagePlaceholder: "What does the product do, who is it for, and where will the video live?",
+    selectLabel: "When do you need the video?",
+    selectPlaceholder: "Select one",
+    selectOptions: ["Within a month", "In 1-3 months", "Later this year", "Just exploring"],
+    needLabel: "What do you need?",
+    needOptions: ["Homepage explainer", "Launch video", "Ad cutdowns", "Demo or onboarding video"],
+  },
+};
+
 export function getLandingPage(slug) {
   return landingPages[slug] || null;
+}
+
+/** The landing page a lead came from, by its `source` tag (used on /thank-you). */
+export function getLandingPageBySource(source) {
+  if (!source) return null;
+  return Object.values(landingPages).find((p) => p.source === source) || null;
 }

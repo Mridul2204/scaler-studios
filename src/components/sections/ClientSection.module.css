@@ -1,117 +1,108 @@
+/* Home page client strip: a hairline, a small label and one calm row of
+   single-colour logos. Sits on the same navy as the About section above it. */
+
 .section {
   width: 100%;
-  padding: 6rem 0 5rem;
   background-color: #073624;
-  color: #FFFFFF;
+  color: #ffffff;
+  padding: 0 2.5rem 5.5rem;
+  /* Scales with the viewport so all nine logos sit on one line from ~1240px up. */
+  --logo-h: clamp(20px, 1.8vw, 28px);
 }
 
-.container {
-  width: 100%;
-  max-width: 1600px;
+.inner {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 2.75rem;
 }
 
-.headerRow {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
-  gap: 2.5rem;
-  align-items: start;
-  border-top: 1px solid rgba(251, 240, 242, 0.25);
-  padding-top: 3rem;
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 2.75rem;
 }
 
 .label {
-  font-family: 'Nib Pro', serif;
-  font-style: italic;
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-  color: #FFFFFF;
   margin: 0;
-}
-
-.logoGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 4.5rem;
-  column-gap: 4rem;
-  align-items: center;
-  justify-items: center;
-}
-
-.logoCell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90px;
-}
-
-.clientLogoImg {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  opacity: 0.9;
-  filter: grayscale(100%) invert(1);
-  mix-blend-mode: screen;
-}
-
-.showAllWrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
-}
-
-.showAllBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.75rem;
-  border: 1px solid rgba(251, 240, 242, 0.45);
-  border-radius: 9999px;
-  color: #FFFFFF;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0.7;
   text-decoration: none;
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  color: inherit;
+  transition: opacity 0.2s ease;
 }
 
-.showAllBtn:hover {
-  background-color: #FFFFFF;
-  color: #073624;
-  border-color: #FFFFFF;
+.link:hover {
+  opacity: 1;
 }
 
-@media (max-width: 968px) {
-  .headerRow {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+.row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem clamp(1.5rem, 2.4vw, 2.4rem);
+}
+
+@media (min-width: 1240px) {
+  .row {
+    justify-content: space-between;
   }
-  .logoGrid {
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 3rem;
-    column-gap: 2rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  opacity: 0.82;
+  transition: opacity 0.2s ease;
+}
+
+.item:hover {
+  opacity: 1;
+}
+
+/* Below the one-row breakpoint the logos sit in a tidy 3 x 3 block. */
+@media (max-width: 1239px) {
+  .section {
+    --logo-h: 22px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    justify-items: center;
+    gap: 1.75rem clamp(3rem, 8vw, 7rem);
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 4rem 0 3rem;
+    padding: 0 1.5rem 3.5rem;
+    --logo-h: 19px;
   }
-  .container {
-    padding: 0 1.5rem;
+  .inner {
+    padding-top: 2rem;
   }
-  .logoGrid {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 2.5rem;
-    column-gap: 1.5rem;
+  .head {
+    margin-bottom: 1.75rem;
   }
-  .showAllWrap {
-    margin-top: 2.5rem;
+  .row {
+    gap: 1.25rem 1.75rem;
   }
 }

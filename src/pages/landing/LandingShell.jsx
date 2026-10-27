@@ -44,12 +44,12 @@ export default function LandingShell({
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("whatsapp_click", { placement: "header" })}
-              className="inline-flex items-center gap-2 text-sm font-semibold opacity-90 hover:opacity-100 px-3 py-2 rounded-full border border-white/20"
+              className={`${styles.headerBtn} inline-flex items-center gap-2 font-semibold opacity-90 hover:opacity-100 rounded-full border border-white/20`}
             >
               <WhatsAppIcon className="w-4 h-4" />
               <span className="hidden sm:inline">WhatsApp</span>
             </a>
-            <button type="button" className={`${styles.btnPrimary} hidden md:inline-flex`} onClick={() => scrollToForm("header")}>
+            <button type="button" className={`${styles.btnPrimary} ${styles.headerBtn} hidden md:inline-flex`} onClick={() => scrollToForm("header")}>
               {ctaLabel}
             </button>
           </div>

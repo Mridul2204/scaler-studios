@@ -59,6 +59,15 @@ function PlayIcon() {
   );
 }
 
+function CalendarIcon({ className = "" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
+    </svg>
+  );
+}
+
 /**
  * One playable sample. `youtubeId` shows a thumbnail and loads the
  * privacy-enhanced YouTube player only on click; `videoUrl` is a self-hosted
@@ -184,7 +193,12 @@ export default function LandingPage() {
               <button type="button" className={`${styles.btnPrimary} text-lg py-5 px-8`} onClick={() => scrollToForm("hero")}>
                 {hero.primaryCta}
               </button>
-              <a href={hero.secondaryHref || "#packages"} className={styles.btnGhost} onClick={() => trackEvent("cta_click", { placement: "hero-secondary" })}>
+              <a
+                href={hero.secondaryHref || "#packages"}
+                className={styles.btnGhost}
+                {...(/^https?:/.test(hero.secondaryHref || "") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                onClick={() => trackEvent(/^https?:/.test(hero.secondaryHref || "") ? "booking_click" : "cta_click", { placement: "hero-secondary" })}
+              >
                 {hero.secondaryCta}
               </a>
             </div>
@@ -200,7 +214,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="lg:col-span-5">
-            <div className="relative rounded-[24px] overflow-hidden aspect-[4/5] sm:aspect-video lg:aspect-[4/5] bg-[#0A2629] shadow-2xl shadow-black/30">
+            <div className="relative rounded-[24px] overflow-hidden aspect-video bg-[#0A2629] shadow-2xl shadow-black/30">
               <video
                 src={hero.videoUrl}
                 autoPlay
@@ -465,6 +479,17 @@ export default function LandingPage() {
             <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight leading-[1.05]">{form.heading}</h2>
             <p className="mt-5 text-lg leading-relaxed opacity-80">{form.subhead}</p>
             <div className="mt-8 flex flex-col gap-3 text-sm">
+              {page.booking?.url && (
+                <a
+                  href={page.booking.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("booking_click", { placement: "form" })}
+                  className="inline-flex items-center gap-2 font-semibold hover:underline"
+                >
+                  <CalendarIcon className="w-5 h-5" /> {page.booking.formText || "Book a call with Mridul"}
+                </a>
+              )}
               <a
                 href={whatsappUrl(page.whatsappMessage || "Hi Mridul, I came from your ad creative page. Can we talk about creative for our ads?")}
                 target="_blank"

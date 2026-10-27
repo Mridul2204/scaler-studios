@@ -7,9 +7,10 @@ import { whatsappUrl, CONTACT_EMAIL } from "../../lib/contactInfo";
 import { trackEvent } from "../../lib/analytics";
 import { getLandingPageBySource } from "../../data/landingPages";
 
-// Optional: a Calendly / GoHighLevel booking link. Set VITE_BOOKING_URL in
-// Vercel to show a "Book a call" button here.
-const BOOKING_URL = import.meta.env.VITE_BOOKING_URL || "";
+// Optional site-wide booking link (Calendly, GoHighLevel, Google Calendar).
+// A landing page's own `booking.url` wins; VITE_BOOKING_URL in Vercel is the
+// fallback for pages without one.
+const DEFAULT_BOOKING_URL = import.meta.env.VITE_BOOKING_URL || "";
 
 /**
  * /thank-you — where every landing page form lands after a successful send.
@@ -20,8 +21,10 @@ export default function ThankYou() {
   const { state } = useLocation();
   const name = state?.name ? state.name.split(" ")[0] : "";
   // Landing pages can set their own next-step line (thankYou.body).
+  const page = getLandingPageBySource(state?.source);
+  const BOOKING_URL = page?.booking?.url || DEFAULT_BOOKING_URL;
   const body =
-    getLandingPageBySource(state?.source)?.thankYou?.body ||
+    page?.thankYou?.body ||
     "Mridul will reply within one business day with a short review of your creative and the package we would recommend.";
 
   useSeo({ title: "Thanks, we have your details", path: "/thank-you", noindex: true });

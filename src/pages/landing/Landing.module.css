@@ -79,6 +79,14 @@
   background: rgba(7, 54, 36, 0.08);
 }
 
+/* Header buttons: WhatsApp pill and CTA share one height so they line up. */
+.headerBtn {
+  height: 2.75rem;
+  padding: 0 1.15rem;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
 /* Client logos: white on dark, dark on light */
 .logo {
   height: 28px;

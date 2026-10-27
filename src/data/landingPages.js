@@ -406,7 +406,7 @@ landingPages["saas-explainers"] = {
   seo: {
     title: "Animated Explainer Videos for SaaS Startups",
     description:
-      "Animated explainer videos for SaaS products, from $2,500. Get the first 6 storyboard frames of your video free within 48 hours, no call needed.",
+      "Animated explainer videos for SaaS products, from $2,500. Get a free storyboard of your video's opening scenes within 48 hours, no call needed.",
     noindex: false,
   },
   source: "lp-saas-explainers",
@@ -414,7 +414,14 @@ landingPages["saas-explainers"] = {
   whatsappMessage: "Hi Mridul, I came from your SaaS explainer page and want to talk about a video for our product.",
   emailSubject: "SaaS explainer enquiry",
   thankYou: {
-    body: "Mridul will send the first 6 storyboard frames of your video within 48 hours.",
+    body: "Mridul will send your free storyboard, the opening 6 scenes of your video with the script, within 48 hours.",
+  },
+  // Booking link: the hero's second button, the line under the form and the
+  // thank-you page button all use it. Mridul's Calendly "30 Minute Call"
+  // (Google Meet); the UTM tags show on each booking in Calendly.
+  booking: {
+    url: "https://calendly.com/mridulkhurana/30mins?utm_source=website&utm_campaign=lp-saas-explainers",
+    formText: "Rather talk it through? Book a 30-minute call with Mridul",
   },
 
   // ── Hero ──
@@ -423,13 +430,13 @@ landingPages["saas-explainers"] = {
     headline: "Show what your product does",
     headlineAccent: "in 60 seconds.",
     subhead:
-      "We script, storyboard and animate explainer videos for software products. Send us your site and we'll sketch the first 6 storyboard frames of your video, free, within 48 hours.",
-    primaryCta: "Get free storyboard frames",
-    secondaryCta: "Watch samples",
-    secondaryHref: "#work",
+      "We script, storyboard and animate explainer videos for software products. Send us your site and within 48 hours we'll sketch the opening 6 scenes of your video, with the script, free.",
+    primaryCta: "Get a free storyboard",
+    secondaryCta: "Book a call",
+    secondaryHref: "https://calendly.com/mridulkhurana/30mins?utm_source=website&utm_campaign=lp-saas-explainers",
     videoUrl: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/video.mp4",
     bullets: [
-      "Free storyboard frames in 48 hours",
+      "Free storyboard in 48 hours",
       "You approve every stage before we animate",
       "Fixed price, 50% on script approval",
     ],
@@ -453,9 +460,10 @@ landingPages["saas-explainers"] = {
     heading: "Recent work",
     subhead: "Explainers and motion pieces made by the team that will make yours.",
     items: [
+      // EVE opens on Frame.io until it is on the YouTube channel.
+      { label: "EVE", kind: "Product explainer", duration: "1:19", href: "https://f.io/_b0lNMvQ" },
+      { label: "Venterr", kind: "HR SaaS explainer", duration: "1:13", youtubeId: "8hws_m3u6jY" },
       { label: "Gumlet", kind: "SaaS explainer", duration: "0:30", youtubeId: "uLcEsdQRATQ" },
-      { label: "Blockfence", kind: "Product explainer", duration: "1:36", youtubeId: "1IEPiNDsKm8" },
-      { label: "Needle", kind: "Launch video", duration: "0:46", youtubeId: "ZNoRAF8N6N8" },
       { label: "DAC", kind: "Motion graphics", duration: "0:33", youtubeId: "tNcpwhmDOsU" },
     ],
   },
@@ -544,7 +552,7 @@ landingPages["saas-explainers"] = {
   process: {
     heading: "How it works",
     steps: [
-      { n: "01", title: "Free storyboard", text: "Send your website. Within 48 hours you get the first 6 storyboard frames of your video, with the voiceover line under each. No call needed." },
+      { n: "01", title: "Free storyboard", text: "Send your website. Within 48 hours you get the opening 6 scenes of your video, sketched, with the voiceover line under each. No call needed." },
       { n: "02", title: "Kickoff", text: "If you like the direction, a 20-minute call locks the message, the voice and the package. You pay 50% once the script is approved." },
       { n: "03", title: "Storyboard and voice", text: "Every scene gets a frame and the voiceover is recorded. You approve both before animation starts." },
       { n: "04", title: "Animation and delivery", text: "We animate, add music and sound, and deliver files sized for your homepage, demos and ads. The other 50% is due on delivery." },
@@ -571,7 +579,7 @@ landingPages["saas-explainers"] = {
   faq: {
     heading: "Questions founders ask first",
     items: [
-      { q: "What exactly is free?", a: "The first 6 storyboard frames of a video for your product, with the voiceover line under each, within 48 hours of your request. No call and no obligation. If you don't go ahead, you keep the frames." },
+      { q: "What exactly is free?", a: "A storyboard of the opening 6 scenes of a video for your product, with the voiceover line under each, within 48 hours of your request. No call and no obligation. If you don't go ahead, you keep it." },
       { q: "Why would you do this for free?", a: "It is the fastest way for you to judge our thinking before you spend anything. We make a limited number each week, for companies with a live product." },
       { q: "How long does a video take?", a: "Three weeks for Starter and Launch Kit, four weeks for Full Funnel, counted from script approval. Tell us your launch date and we plan backwards from it." },
       { q: "What do you need from us?", a: "Your website, a product walkthrough or demo login, your brand assets and 20 minutes for a kickoff call. We write, you approve." },
@@ -584,9 +592,9 @@ landingPages["saas-explainers"] = {
   // ── Final CTA + form ──
   form: {
     eyebrow: "Free storyboard",
-    heading: "Get your free storyboard frames.",
-    subhead: "Share your product website. Within 48 hours we send the first 6 storyboard frames of your video. No call needed.",
-    submitText: "Send me my free frames",
+    heading: "See your video before you pay for it.",
+    subhead: "Send your product website. Within 48 hours you get the opening 6 scenes of your explainer, sketched with the script. No call needed.",
+    submitText: "Send me my free storyboard",
     privacy: "We only use your details to reply to this request.",
     defaultService: "SaaS Explainer",
     brandLabel: "Product website",

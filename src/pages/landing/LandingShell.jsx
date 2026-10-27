@@ -21,8 +21,14 @@ export function WhatsAppIcon({ className = "w-5 h-5" }) {
  * Minimal shell for ad landing pages: logo, WhatsApp, one CTA. No loader,
  * no custom cursor, no page transitions, so it paints fast on mobile.
  */
-export default function LandingShell({ children, ctaLabel = "Get a free creative review", showStickyBar = true }) {
-  const waHref = whatsappUrl("Hi Mridul, I came from your ad creative page and want to talk about creative for our ads.");
+export default function LandingShell({
+  children,
+  ctaLabel = "Get a free creative review",
+  showStickyBar = true,
+  waMessage = "Hi Mridul, I came from your ad creative page and want to talk about creative for our ads.",
+  emailSubject = "Ad creative enquiry",
+}) {
+  const waHref = whatsappUrl(waMessage);
 
   return (
     <div className={styles.page}>
@@ -62,7 +68,7 @@ export default function LandingShell({ children, ctaLabel = "Get a free creative
             <p className="opacity-60">Video, motion, ad creative and performance marketing. Est. 2020.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 opacity-90">
-            <a href={mailtoUrl("Ad creative enquiry")} className="hover:underline">{CONTACT_EMAIL}</a>
+            <a href={mailtoUrl(emailSubject)} className="hover:underline">{CONTACT_EMAIL}</a>
             <a href={waHref} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-2">
               <WhatsAppIcon className="w-4 h-4" /> {WHATSAPP_NUMBER}
             </a>

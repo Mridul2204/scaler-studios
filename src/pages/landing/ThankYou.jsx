@@ -5,6 +5,7 @@ import LandingShell, { WhatsAppIcon } from "./LandingShell";
 import { useSeo } from "../../lib/seo";
 import { whatsappUrl, CONTACT_EMAIL } from "../../lib/contactInfo";
 import { trackEvent } from "../../lib/analytics";
+import { getLandingPageBySource } from "../../data/landingPages";
 
 // Optional: a Calendly / GoHighLevel booking link. Set VITE_BOOKING_URL in
 // Vercel to show a "Book a call" button here.
@@ -18,6 +19,10 @@ const BOOKING_URL = import.meta.env.VITE_BOOKING_URL || "";
 export default function ThankYou() {
   const { state } = useLocation();
   const name = state?.name ? state.name.split(" ")[0] : "";
+  // Landing pages can set their own next-step line (thankYou.body).
+  const body =
+    getLandingPageBySource(state?.source)?.thankYou?.body ||
+    "Mridul will reply within one business day with a short review of your creative and the package we would recommend.";
 
   useSeo({ title: "Thanks, we have your details", path: "/thank-you", noindex: true });
 
@@ -42,8 +47,7 @@ export default function ThankYou() {
             Thanks{name ? `, ${name}` : ""}. <span className={`${styles.serif} text-[#1DBF73]`}>We have your details.</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl opacity-85 leading-relaxed">
-            Mridul will reply within one business day with a short review of your creative and the package we would recommend.
-            Keep an eye on your inbox (and your spam folder, just in case) for an email from {CONTACT_EMAIL}.
+            {body} Keep an eye on your inbox (and your spam folder, just in case) for an email from {CONTACT_EMAIL}.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             {BOOKING_URL && (

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import Reveal from "./Reveal";
 import styles from "./Landing.module.css";
@@ -49,6 +49,104 @@ function Check() {
   );
 }
 
+function PlayIcon() {
+  return (
+    <span className={styles.playIcon} aria-hidden="true">
+      <svg viewBox="0 0 24 24" className="w-7 h-7 ml-1" fill="currentColor">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </span>
+  );
+}
+
+/**
+ * One playable sample. `youtubeId` shows a thumbnail and loads the
+ * privacy-enhanced YouTube player only on click; `videoUrl` is a self-hosted
+ * mp4 (ImageKit); `href` is an external player (e.g. Frame.io) opened in a
+ * new tab behind a branded poster.
+ */
+function VideoSample({ item }) {
+  const [playing, setPlaying] = useState(false);
+  const title = `${item.label}: ${item.kind}`;
+  const meta = (
+    <span className={styles.videoMeta}>
+      <span>
+        <span className="block font-bold text-lg leading-tight">{item.label}</span>
+        <span className="block text-sm opacity-80">{item.kind}</span>
+      </span>
+      {item.duration && <span className={styles.videoDuration}>{item.duration}</span>}
+    </span>
+  );
+
+  if (item.youtubeId) {
+    return (
+      <div className={styles.video}>
+        {playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        ) : (
+          <button
+            type="button"
+            className={styles.videoButton}
+            aria-label={`Play ${title}`}
+            onClick={() => {
+              trackEvent("sample_play", { sample: item.label });
+              setPlaying(true);
+            }}
+          >
+            <img src={`https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`} alt="" loading="lazy" decoding="async" />
+            <span className={styles.videoShade} />
+            <PlayIcon />
+            {meta}
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  if (item.videoUrl) {
+    return (
+      <div className={styles.video}>
+        <video
+          src={item.videoUrl}
+          poster={item.poster}
+          controls
+          playsInline
+          preload="metadata"
+          aria-label={title}
+          onPlay={() => trackEvent("sample_play", { sample: item.label })}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.video}>
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.videoButton}
+        aria-label={`Watch ${title} (opens in a new tab)`}
+        onClick={() => trackEvent("sample_play", { sample: item.label, external: true })}
+      >
+        <span className={styles.videoPoster}>
+          <span className={`${styles.serif} ${styles.videoPosterName}`}>{item.label}</span>
+        </span>
+        <span className={styles.videoShade} />
+        <span className={styles.videoExternal}>Opens in a new tab</span>
+        <PlayIcon />
+        {meta}
+      </a>
+    </div>
+  );
+}
+
 export default function LandingPage() {
   const { slug } = useParams();
   const page = getLandingPage(slug);
@@ -69,10 +167,10 @@ export default function LandingPage() {
 
   if (!page) return <Navigate to="/" replace />;
 
-  const { hero, trust, problem, deliverables, packages, process, proof, samples, upsell, faq, form } = page;
+  const { hero, trust, work, problem, deliverables, packages, process, proof, samples, upsell, faq, form } = page;
 
   return (
-    <LandingShell ctaLabel={hero.primaryCta}>
+    <LandingShell ctaLabel={hero.primaryCta} waMessage={page.whatsappMessage} emailSubject={page.emailSubject}>
       {/* ── Hero ── */}
       <section className="px-5 md:px-8 pt-12 md:pt-20 pb-14 md:pb-24">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -86,7 +184,7 @@ export default function LandingPage() {
               <button type="button" className={`${styles.btnPrimary} text-lg py-5 px-8`} onClick={() => scrollToForm("hero")}>
                 {hero.primaryCta}
               </button>
-              <a href="#packages" className={styles.btnGhost} onClick={() => trackEvent("cta_click", { placement: "hero-secondary" })}>
+              <a href={hero.secondaryHref || "#packages"} className={styles.btnGhost} onClick={() => trackEvent("cta_click", { placement: "hero-secondary" })}>
                 {hero.secondaryCta}
               </a>
             </div>
@@ -130,6 +228,25 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Work: playable samples (optional) ── */}
+      {work && (
+        <section id="work" className="px-5 md:px-8 py-16 md:py-24 scroll-mt-20">
+          <div className="max-w-[1200px] mx-auto">
+            <Reveal as="div" className="max-w-[60ch]">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-[1.05]">{work.heading}</h2>
+              {work.subhead && <p className="mt-4 text-lg opacity-80">{work.subhead}</p>}
+            </Reveal>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+              {work.items.map((item, i) => (
+                <Reveal as="div" key={item.label} delay={(i % 2) * 0.06}>
+                  <VideoSample item={item} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Problem ── */}
       <section className="px-5 md:px-8 py-16 md:py-24">
@@ -273,53 +390,57 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Samples ── */}
-      <section className="px-5 md:px-8 py-16 md:py-24">
-        <div className="max-w-[1200px] mx-auto">
-          <Reveal as="h2" className="text-3xl md:text-5xl font-bold tracking-tight leading-[1.05]">{samples.heading}</Reveal>
-          <div className="mt-10 grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-            {samples.items.map((s, i) => (
-              <Reveal as="div" key={s.src} delay={(i % 3) * 0.06} className={styles.sample}>
-                <img src={s.src} alt={s.alt} loading="lazy" decoding="async" />
-                <span className={styles.sampleLabel}>{s.label}</span>
-              </Reveal>
-            ))}
+      {/* ── Samples (optional) ── */}
+      {samples && (
+        <section className="px-5 md:px-8 py-16 md:py-24">
+          <div className="max-w-[1200px] mx-auto">
+            <Reveal as="h2" className="text-3xl md:text-5xl font-bold tracking-tight leading-[1.05]">{samples.heading}</Reveal>
+            <div className="mt-10 grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+              {samples.items.map((s, i) => (
+                <Reveal as="div" key={s.src} delay={(i % 3) * 0.06} className={styles.sample}>
+                  <img src={s.src} alt={s.alt} loading="lazy" decoding="async" />
+                  <span className={styles.sampleLabel}>{s.label}</span>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* ── Upsell ── */}
-      <section className="px-5 md:px-8 pb-16 md:pb-24">
-        <Reveal as="div" className="max-w-[1200px] mx-auto rounded-[28px] bg-[#1DBF73] text-[#073624] p-8 md:p-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-70">{upsell.eyebrow}</p>
-            <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight leading-[1.05]">{upsell.heading}</h2>
-            <p className="mt-5 text-lg leading-relaxed opacity-90 max-w-[62ch]">{upsell.body}</p>
-          </div>
-          <div className="lg:col-span-4 lg:justify-self-end">
-            {upsell.href ? (
-              <Link
-                to={upsell.href}
-                className="inline-flex items-center justify-center rounded-full bg-[#073624] text-white font-bold px-8 py-5 text-lg hover:bg-[#0A2629] transition-colors"
-                onClick={() => trackEvent("cta_click", { placement: "upsell", href: upsell.href })}
-              >
-                {upsell.cta}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                className="inline-flex items-center justify-center rounded-full bg-[#073624] text-white font-bold px-8 py-5 text-lg hover:bg-[#0A2629] transition-colors"
-                onClick={() => {
-                  trackEvent("cta_click", { placement: "upsell" });
-                  scrollToForm("upsell");
-                }}
-              >
-                {upsell.cta}
-              </button>
-            )}
-          </div>
-        </Reveal>
-      </section>
+      {/* ── Upsell (optional) ── */}
+      {upsell && (
+        <section className={`px-5 md:px-8 pb-16 md:pb-24 ${samples ? "" : "pt-16 md:pt-24"}`}>
+          <Reveal as="div" className="max-w-[1200px] mx-auto rounded-[28px] bg-[#1DBF73] text-[#073624] p-8 md:p-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-70">{upsell.eyebrow}</p>
+              <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight leading-[1.05]">{upsell.heading}</h2>
+              <p className="mt-5 text-lg leading-relaxed opacity-90 max-w-[62ch]">{upsell.body}</p>
+            </div>
+            <div className="lg:col-span-4 lg:justify-self-end">
+              {upsell.href ? (
+                <Link
+                  to={upsell.href}
+                  className="inline-flex items-center justify-center rounded-full bg-[#073624] text-white font-bold px-8 py-5 text-lg hover:bg-[#0A2629] transition-colors"
+                  onClick={() => trackEvent("cta_click", { placement: "upsell", href: upsell.href })}
+                >
+                  {upsell.cta}
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center rounded-full bg-[#073624] text-white font-bold px-8 py-5 text-lg hover:bg-[#0A2629] transition-colors"
+                  onClick={() => {
+                    trackEvent("cta_click", { placement: "upsell" });
+                    scrollToForm("upsell");
+                  }}
+                >
+                  {upsell.cta}
+                </button>
+              )}
+            </div>
+          </Reveal>
+        </section>
+      )}
 
       {/* ── FAQ ── */}
       <section className={`${styles.onLight} bg-[#F4F6F5] text-[#073624] px-5 md:px-8 py-16 md:py-24`}>
@@ -345,7 +466,7 @@ export default function LandingPage() {
             <p className="mt-5 text-lg leading-relaxed opacity-80">{form.subhead}</p>
             <div className="mt-8 flex flex-col gap-3 text-sm">
               <a
-                href={whatsappUrl("Hi Mridul, I came from your ad creative page. Can we talk about creative for our ads?")}
+                href={whatsappUrl(page.whatsappMessage || "Hi Mridul, I came from your ad creative page. Can we talk about creative for our ads?")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("whatsapp_click", { placement: "form" })}

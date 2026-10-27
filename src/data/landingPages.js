@@ -460,8 +460,7 @@ landingPages["saas-explainers"] = {
     heading: "Recent work",
     subhead: "Explainers and motion pieces made by the team that will make yours.",
     items: [
-      // EVE opens on Frame.io until it is on the YouTube channel.
-      { label: "EVE", kind: "Product explainer", duration: "1:19", href: "https://f.io/_b0lNMvQ" },
+      { label: "EVE", kind: "Product explainer", duration: "1:20", youtubeId: "aNfzJaq0ZQI" },
       { label: "Venterr", kind: "HR SaaS explainer", duration: "1:13", youtubeId: "8hws_m3u6jY" },
       { label: "Gumlet", kind: "SaaS explainer", duration: "0:30", youtubeId: "uLcEsdQRATQ" },
       { label: "DAC", kind: "Motion graphics", duration: "0:33", youtubeId: "tNcpwhmDOsU" },

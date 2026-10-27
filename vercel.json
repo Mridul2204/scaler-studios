@@ -12,7 +12,9 @@
     { "source": "/about-us", "destination": "/about", "permanent": true },
     { "source": "/our-work", "destination": "/work", "permanent": true },
     { "source": "/contact-us", "destination": "/contact", "permanent": true },
-    { "source": "/services-list", "destination": "/services", "permanent": true }
+    { "source": "/services-list", "destination": "/services", "permanent": true },
+    { "source": "/yt", "destination": "/lp/saas-explainers?utm_source=youtube&utm_medium=video&utm_campaign=saas-explainers", "permanent": false },
+    { "source": "/yt/", "destination": "/lp/saas-explainers?utm_source=youtube&utm_medium=video&utm_campaign=saas-explainers", "permanent": false }
   ],
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }

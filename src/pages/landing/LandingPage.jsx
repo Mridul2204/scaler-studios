@@ -28,13 +28,13 @@ function RatingBadge({ dark = true }) {
       href={fiverrStats.profileUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-3 rounded-full px-4 py-2 border ${dark ? "border-white/15 bg-white/5" : "border-[#073624]/15 bg-white"}`}
+      className={`inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-[20px] px-4 py-2 border ${dark ? "border-white/15 bg-white/5" : "border-[#073624]/15 bg-white"}`}
     >
       <Stars />
-      <span className="text-sm font-semibold">
+      <span className="text-sm font-semibold whitespace-nowrap">
         {fiverrStats.rating} from {fiverrStats.reviewCount} reviews
       </span>
-      <span className={`text-xs font-bold uppercase tracking-wider ${dark ? "text-[#1DBF73]" : "text-[#073624]/70"}`}>
+      <span className={`text-xs font-bold uppercase tracking-wider whitespace-nowrap ${dark ? "text-[#1DBF73]" : "text-[#073624]/70"}`}>
         {fiverrStats.badges.join(" · ")} on Fiverr
       </span>
     </a>
@@ -183,9 +183,9 @@ export default function LandingPage() {
       {/* ── Hero ── */}
       <section className="px-5 md:px-8 pt-12 md:pt-20 pb-14 md:pb-24">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-6 xl:col-span-5">
             <p className="text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#1DBF73] mb-5">{hero.eyebrow}</p>
-            <h1 className="text-[2.4rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[4.2rem] font-bold tracking-tight">
+            <h1 className="text-[2.4rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[3.4rem] xl:text-[3.8rem] font-bold tracking-tight">
               {hero.headline} <span className={`${styles.serif} text-[#1DBF73]`}>{hero.headlineAccent}</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl leading-relaxed opacity-85 max-w-[58ch]">{hero.subhead}</p>
@@ -213,7 +213,7 @@ export default function LandingPage() {
               <RatingBadge />
             </div>
           </div>
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-6 xl:col-span-7">
             <div className="relative rounded-[24px] overflow-hidden aspect-video bg-[#0A2629] shadow-2xl shadow-black/30">
               <video
                 src={hero.videoUrl}
@@ -478,14 +478,14 @@ export default function LandingPage() {
             <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-70">{form.eyebrow}</p>
             <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight leading-[1.05]">{form.heading}</h2>
             <p className="mt-5 text-lg leading-relaxed opacity-80">{form.subhead}</p>
-            <div className="mt-8 flex flex-col gap-3 text-sm">
+            <div className="mt-6 flex flex-col gap-1 text-sm">
               {page.booking?.url && (
                 <a
                   href={page.booking.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent("booking_click", { placement: "form" })}
-                  className="inline-flex items-center gap-2 font-semibold hover:underline"
+                  className="inline-flex items-center gap-2 py-2.5 font-semibold hover:underline"
                 >
                   <CalendarIcon className="w-5 h-5" /> {page.booking.formText || "Book a call with Mridul"}
                 </a>
@@ -495,7 +495,7 @@ export default function LandingPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("whatsapp_click", { placement: "form" })}
-                className="inline-flex items-center gap-2 font-semibold hover:underline"
+                className="inline-flex items-center gap-2 py-2.5 font-semibold hover:underline"
               >
                 <WhatsAppIcon className="w-5 h-5" /> Prefer to chat? Message us on WhatsApp
               </a>

@@ -34,7 +34,7 @@ export default function LandingShell({
     <div className={styles.page}>
       <header className={styles.header}>
         <div className="max-w-[1200px] mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-3" aria-label="Scaler Studios home">
+          <Link to="/" className="flex items-center gap-3 py-2 pr-2 -my-2" aria-label="Scaler Studios home">
             <img src="/logonewlong.png" alt="" className="h-7 md:h-9 w-auto" />
             <span className="hidden sm:inline font-bold tracking-tight text-lg md:text-xl">Scaler Studios</span>
           </Link>
@@ -49,7 +49,7 @@ export default function LandingShell({
               <WhatsAppIcon className="w-4 h-4" />
               <span className="hidden sm:inline">WhatsApp</span>
             </a>
-            <button type="button" className={`${styles.btnPrimary} ${styles.headerBtn} hidden md:inline-flex`} onClick={() => scrollToForm("header")}>
+            <button type="button" className={`${styles.btnPrimary} ${styles.headerBtn} ${styles.headerCta}`} onClick={() => scrollToForm("header")}>
               {ctaLabel}
             </button>
           </div>
@@ -67,13 +67,13 @@ export default function LandingShell({
             </div>
             <p className="opacity-60">Video, motion, ad creative and performance marketing. Est. 2020.</p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 opacity-90">
-            <a href={mailtoUrl(emailSubject)} className="hover:underline">{CONTACT_EMAIL}</a>
-            <a href={waHref} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row gap-0 sm:gap-6 opacity-90">
+            <a href={mailtoUrl(emailSubject)} className="hover:underline py-3 sm:py-0">{CONTACT_EMAIL}</a>
+            <a href={waHref} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-2 py-3 sm:py-0">
               <WhatsAppIcon className="w-4 h-4" /> {WHATSAPP_NUMBER}
             </a>
-            <Link to="/legal" className="hover:underline opacity-70">Legal</Link>
-            <Link to="/" className="hover:underline opacity-70">Main site</Link>
+            <Link to="/legal" className="hover:underline opacity-70 py-3 sm:py-0">Legal</Link>
+            <Link to="/" className="hover:underline opacity-70 py-3 sm:py-0">Main site</Link>
           </div>
         </div>
         <p className="max-w-[1200px] mx-auto mt-6 text-xs opacity-40">© 2020-2026 Scaler Studios. All rights reserved.</p>

@@ -1,10 +1,11 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SmileLogo from "../ui/SmileLogo";
 import { usePageContent } from "../../hooks/usePageContent";
 import { getContent } from "../../lib/content";
 import { defaults } from "../../lib/contentDefaults";
+import { trackEvent } from "../../lib/analytics";
 
 const IMAGEKIT_VIDEO = "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/video.mp4";
 
@@ -14,11 +15,67 @@ export function HeroTopText() {
   return null;
 }
 
+/* Speaker icon: waves when sound is on, a cross when it is off. */
+function SoundIcon({ on }) {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor" stroke="none" />
+      {on ? (
+        <>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+          <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+        </>
+      ) : (
+        <>
+          <path d="M16 9l5 6" />
+          <path d="M21 9l-5 6" />
+        </>
+      )}
+    </svg>
+  );
+}
+
 export default function Hero() {
   const containerRef = useRef(null);
   const videoWrapperRef = useRef(null);
+  const videoRef = useRef(null);
   const textRef = useRef(null);
   const logoRef = useRef(null);
+  // The showreel autoplays muted (browsers require it); this toggle lets
+  // people turn the sound on. It mutes itself again once the video scrolls
+  // out of view so audio never keeps playing under the rest of the page.
+  const [soundOn, setSoundOn] = useState(false);
+
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    const next = !soundOn;
+    video.muted = !next;
+    if (next) {
+      video.volume = 1;
+      const p = video.play();
+      if (p && p.catch) p.catch(() => {});
+    }
+    setSoundOn(next);
+    trackEvent("hero_sound", { on: next });
+  };
+
+  useEffect(() => {
+    if (!soundOn) return undefined;
+    const video = videoRef.current;
+    if (!video || typeof IntersectionObserver === "undefined") return undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          video.muted = true;
+          setSoundOn(false);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [soundOn]);
 
   const { sections } = usePageContent("home");
   const headingBold = getContent(sections, "hero.headingBold", defaults.home.hero.headingBold);
@@ -114,6 +171,7 @@ export default function Hero() {
         }}
       >
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
@@ -122,6 +180,17 @@ export default function Hero() {
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           src={activeVideoUrl}
         />
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-pressed={soundOn}
+          aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+          title={soundOn ? "Sound off" : "Sound on"}
+          className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-10 inline-flex items-center justify-center gap-2 h-11 min-w-11 md:h-10 md:min-w-10 px-3 rounded-full bg-black/45 hover:bg-black/65 text-white text-xs font-semibold tracking-wide border border-white/20 backdrop-blur-sm transition-colors cursor-pointer"
+        >
+          <SoundIcon on={soundOn} />
+          <span className="hidden sm:inline">{soundOn ? "Sound on" : "Sound off"}</span>
+        </button>
       </div>
 
     </section>

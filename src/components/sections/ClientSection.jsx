@@ -1,65 +1,46 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import TransitionLink from "../ui/TransitionLink";
+import ClientLogo from "../ui/ClientLogo";
 import styles from "./ClientSection.module.css";
 import { usePageContent } from "../../hooks/usePageContent";
-import { getContent, getLogoUrl } from "../../lib/content";
+import { getContent } from "../../lib/content";
 import { defaults } from "../../lib/contentDefaults";
 
-function FadeIn({ children, delay = 0, className }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
+/**
+ * Home page client strip: one quiet row of single-colour logos under the
+ * About section. Logos come from the Clients page list (CMS: clients.list,
+ * "Show on Homepage" flag); the label and link copy from home.clients.
+ */
 export default function ClientSection() {
-  const { sections } = usePageContent("clients");
-  const allClients = getContent(sections, "list", defaults.clients.list);
+  const { sections: clientSections } = usePageContent("clients");
+  const { sections: homeSections } = usePageContent("home");
 
-  const homeClients = allClients.filter(c => c.showOnHome === true || c.showOnHome === "true");
-  const clients = homeClients.length > 0 ? homeClients : allClients.slice(0, 16);
+  const allClients = getContent(clientSections, "list", defaults.clients.list);
+  const label = getContent(homeSections, "clients.label", defaults.home.clients.label);
+  const linkText = getContent(homeSections, "clients.linkText", defaults.home.clients.linkText);
+
+  const featured = allClients.filter((c) => c.showOnHome === true || c.showOnHome === "true");
+  const clients = (featured.length > 0 ? featured : allClients).filter((c) => c.logo).slice(0, 12);
+
+  if (clients.length === 0) return null;
 
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
-          <div className={styles.logoGrid}>
-            {clients.map((client, i) => {
-              const sizePercent = parseInt(client.logoSize, 10) || 100;
-              const scaleFactor = sizePercent / 100;
-              return (
-                <FadeIn key={client.name} delay={i * 0.04} className={styles.logoCell}>
-                  <img
-                    src={getLogoUrl(client.logo)}
-                    alt={client.name}
-                    loading="lazy"
-                    decoding="async"
-                    className={styles.clientLogoImg}
-                    style={{
-                      transform: `scale(${scaleFactor})`,
-                      transformOrigin: "center center",
-                    }}
-                  />
-                </FadeIn>
-              );
-            })}
-          </div>
-
-        <div className={styles.showAllWrap}>
-          <TransitionLink to="/clients" className={styles.showAllBtn}>
-            Show All
-            <span aria-hidden>→</span>
-          </TransitionLink>
+    <section className={styles.section} aria-label="Clients">
+      <div className={styles.inner}>
+        <div className={styles.head}>
+          <p className={styles.label}>{label}</p>
+          {linkText && (
+            <TransitionLink to="/work" className={styles.link}>
+              {linkText} <span aria-hidden="true">→</span>
+            </TransitionLink>
+          )}
         </div>
+        <ul className={styles.row}>
+          {clients.map((client) => (
+            <li key={client.name} className={styles.item}>
+              <ClientLogo name={client.name} logo={client.logo} size={client.logoSize} />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -4,7 +4,8 @@ import TransitionLink from '../components/ui/TransitionLink';
 import ContactModal from '../components/ui/ContactModal';
 import styles from './Clients.module.css';
 import { usePageContent } from '../hooks/usePageContent';
-import { getContent, getLogoUrl } from '../lib/content';
+import { getContent } from '../lib/content';
+import ClientLogo from '../components/ui/ClientLogo';
 import { defaults } from '../lib/contentDefaults';
 import { useSeo } from '../lib/seo';
 
@@ -29,7 +30,7 @@ function FadeIn({ children, delay = 0, className }) {
 export default function Clients() {
   useSeo({
     title: "Clients",
-    description: "Brands Scaler Studios has produced creative for, including Verizon, Shopify, Subway, Maersk, Allianz and Bringg.",
+    description: "Brands Scaler Studios has produced creative for, including Verizon, Shopify, Maersk, Subway, Crocs, Jacob and Co, Gumlet, Bringg and SafewayTax.",
     path: "/clients",
   });
 
@@ -52,8 +53,9 @@ export default function Clients() {
     const ctaHeading = getContent(sections, "cta.heading", defaults.clients.cta.heading);
     const ctaButtonText = getContent(sections, "cta.buttonText", defaults.clients.cta.buttonText);
 
-    const allowedCategories = new Set(['All', 'Finance', 'Nonprofit', 'Real Estate', 'Education', 'Healthcare', 'Entertainment', 'Government', 'Legal']);
-    const categories = ['All', ...Array.from(new Set(clients.map(c => c.category)))].filter(cat => allowedCategories.has(cat));
+    // Filter pills only earn their place once the list is long enough to need them.
+    const distinctCategories = Array.from(new Set(clients.map(c => c.category).filter(Boolean)));
+    const categories = clients.length >= 12 && distinctCategories.length > 1 ? ['All', ...distinctCategories] : [];
 
     const [activeFilter, setActiveFilter] = useState('All');
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -102,8 +104,10 @@ export default function Clients() {
             </section>
 
             {/* Filter pills */}
+            {categories.length > 0 && (
             <div className={styles.filters}>
                 {categories.map(cat => (
+
                     <button
                         key={cat}
                         className={`${styles.filterBtn} ${activeFilter === cat ? styles.filterBtnActive : ''}`}
@@ -113,27 +117,18 @@ export default function Clients() {
                     </button>
                 ))}
             </div>
+            )}
 
             {/* Logo grid */}
             <section className={styles.gridSection}>
                 <motion.div className={styles.logoGrid} layout>
                     {filtered.map((client, i) => {
-                        const sizePercent = parseInt(client.logoSize, 10) || 100;
-                        const scaleFactor = sizePercent / 100;
                         return (
                             <FadeIn key={client.name} delay={i * 0.04}>
                                 <div className={styles.logoCell}>
                                     <div className={styles.logoContent}>
                                         {client.logo ? (
-                                            <img
-                                                src={getLogoUrl(client.logo)}
-                                                alt={client.name}
-                                                className={styles.clientLogoImg}
-                                                style={{
-                                                    transform: `scale(${scaleFactor})`,
-                                                    transformOrigin: "center center",
-                                                }}
-                                            />
+                                            <ClientLogo name={client.name} logo={client.logo} size={client.logoSize} />
                                         ) : (
                                             <span style={{
                                                 fontSize: '0.75rem',

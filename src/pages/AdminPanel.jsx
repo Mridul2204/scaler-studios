@@ -57,12 +57,11 @@ const PAGE_CONFIG = {
         ],
       },
       {
-        key: "works",
-        title: "Works Heading",
+        key: "clients",
+        title: "Client Logos Strip",
         fields: [
-          { name: "headingBold", label: "Heading (bold line)", type: "textarea" },
-          { name: "headingItalic", label: "Heading (italic line)", type: "textarea" },
-          { name: "ctaText", label: "Button Text", type: "text" },
+          { name: "label", label: "Label above the logos", type: "text" },
+          { name: "linkText", label: "Link text (goes to /work; leave empty to hide)", type: "text" },
         ],
       },
       {

@@ -33,11 +33,11 @@ export default function ClientLogo({ name, logo, size = 100, className = "" }) {
   };
   return (
     <span role="img" aria-label={name} className={`inline-block align-middle ${className}`} style={style}>
+      {/* Eager on purpose: the box has no width until this loads, and the files are tiny. */}
       <img
         src={url}
         alt=""
         aria-hidden="true"
-        loading="lazy"
         decoding="async"
         style={{ display: "block", height: "100%", width: "auto", visibility: "hidden" }}
       />

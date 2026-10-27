@@ -20,6 +20,7 @@ export default function LeadForm({ config, source }) {
   // Qualifier select: label/options come from the page config (ad spend, publishing volume...).
   const selectLabel = config.selectLabel || "Monthly ad spend";
   const selectOptions = config.selectOptions || config.adSpendOptions || [];
+  const selectPlaceholder = config.selectPlaceholder || "Select a range";
   const needLabel = config.needLabel || "What do you need?";
   const brandLabel = config.brandLabel || "Website or brand";
   const brandPlaceholder = config.brandPlaceholder || "yourbrand.com";
@@ -85,7 +86,7 @@ export default function LeadForm({ config, source }) {
       <div>
         <label className={styles.label} htmlFor="lp-spend">{selectLabel}</label>
         <select id="lp-spend" className={`${styles.input} ${styles.select}`} required value={values.adSpend} onChange={set("adSpend")}>
-          <option value="" disabled>Select a range</option>
+          <option value="" disabled>{selectPlaceholder}</option>
           {selectOptions.map((o) => (
             <option key={o} value={o}>{o}</option>
           ))}

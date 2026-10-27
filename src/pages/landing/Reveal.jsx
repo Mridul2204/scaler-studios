@@ -7,6 +7,9 @@ import { createElement, useEffect, useRef, useState } from "react";
 export default function Reveal({ as = "div", delay = 0, className = "", style, children, ...rest }) {
   const ref = useRef(null);
   const [shown, setShown] = useState(false);
+  // Once the entrance has played, the inline transform/transition come off so
+  // stylesheet hover effects (card lift, etc.) can take over the element.
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -34,17 +37,25 @@ export default function Reveal({ as = "div", delay = 0, className = "", style, c
     };
   }, []);
 
+  useEffect(() => {
+    if (!shown) return undefined;
+    const t = setTimeout(() => setSettled(true), (0.55 + delay) * 1000 + 50);
+    return () => clearTimeout(t);
+  }, [shown, delay]);
+
   return createElement(
     as,
     {
       ref,
       className,
-      style: {
-        ...style,
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(18px)",
-        transition: `opacity 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}s, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
-      },
+      style: settled
+        ? style
+        : {
+            ...style,
+            opacity: shown ? 1 : 0,
+            transform: shown ? "none" : "translateY(18px)",
+            transition: `opacity 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}s, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
+          },
       ...rest,
     },
     children

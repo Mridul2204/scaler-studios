@@ -184,12 +184,12 @@ export default function LandingPage() {
       <section className="px-5 md:px-8 pt-12 md:pt-20 pb-14 md:pb-24">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <div className="lg:col-span-6 xl:col-span-5">
-            <p className="text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#1DBF73] mb-5">{hero.eyebrow}</p>
-            <h1 className="text-[2.4rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[3.4rem] xl:text-[3.8rem] font-bold tracking-tight">
+            <p className={`${styles.heroIn} text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#1DBF73] mb-5`} style={{ "--d": "0.05s" }}>{hero.eyebrow}</p>
+            <h1 className={`${styles.heroIn} text-[2.4rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[3.4rem] xl:text-[3.8rem] font-bold tracking-tight`} style={{ "--d": "0.12s" }}>
               {hero.headline} <span className={`${styles.serif} text-[#1DBF73]`}>{hero.headlineAccent}</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl leading-relaxed opacity-85 max-w-[58ch]">{hero.subhead}</p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
+            <p className={`${styles.heroIn} mt-6 text-lg md:text-xl leading-relaxed opacity-85 max-w-[58ch]`} style={{ "--d": "0.2s" }}>{hero.subhead}</p>
+            <div className={`${styles.heroIn} mt-8 flex flex-col sm:flex-row gap-3 sm:items-center`} style={{ "--d": "0.28s" }}>
               <button type="button" className={`${styles.btnPrimary} text-lg py-5 px-8`} onClick={() => scrollToForm("hero")}>
                 {hero.primaryCta}
               </button>
@@ -202,18 +202,18 @@ export default function LandingPage() {
                 {hero.secondaryCta}
               </a>
             </div>
-            <ul className="mt-7 flex flex-col sm:flex-row sm:flex-wrap gap-x-6 gap-y-2 text-sm opacity-80">
+            <ul className={`${styles.heroIn} mt-7 flex flex-col sm:flex-row sm:flex-wrap gap-x-6 gap-y-2 text-sm opacity-80`} style={{ "--d": "0.36s" }}>
               {hero.bullets.map((b) => (
                 <li key={b} className="inline-flex items-center gap-2">
                   <Check /> {b}
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
+            <div className={`${styles.heroIn} mt-8`} style={{ "--d": "0.44s" }}>
               <RatingBadge />
             </div>
           </div>
-          <div className="lg:col-span-6 xl:col-span-7">
+          <div className={`${styles.heroIn} lg:col-span-6 xl:col-span-7`} style={{ "--d": "0.18s" }}>
             <div className="relative rounded-[24px] overflow-hidden aspect-video bg-[#0A2629] shadow-2xl shadow-black/30">
               <video
                 src={hero.videoUrl}

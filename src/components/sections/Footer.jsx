@@ -16,6 +16,11 @@ export default function Footer() {
 
   const { sections } = usePageContent("global");
   const f = getContent(sections, "footer", defaults.global.footer);
+  const pinnedLinks = defaults.global.footer.pinnedLinks || [];
+  const exploreLinks = [
+    ...(f.exploreLinks || []),
+    ...pinnedLinks.filter((p) => !(f.exploreLinks || []).some((l) => l.href === p.href)),
+  ];
 
   return (
     <footer id="main-footer" className={`w-full pt-16 md:pt-28 pb-8 md:pb-12 px-6 md:px-12 relative overflow-hidden z-50 ${bgClass}`}>
@@ -26,7 +31,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <h4 className="text-[10px] uppercase font-bold tracking-widest opacity-50">{f.exploreLabel}</h4>
           <ul className="space-y-2">
-            {(f.exploreLinks || []).map((link) => (
+            {exploreLinks.map((link) => (
               <li key={link.href}>
                 <TransitionLink to={link.href} className="inline-block py-1 text-[1.8rem] sm:text-[2.5rem] md:text-[2.2rem] font-bold tracking-tight hover:opacity-60 transition-opacity leading-none">
                   {link.label}

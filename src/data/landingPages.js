@@ -428,7 +428,7 @@ landingPages["saas-explainers"] = {
   hero: {
     eyebrow: "Animated explainer videos for SaaS startups",
     headline: "Show what your product does",
-    headlineAccent: "in 60 seconds.",
+    headlineAccent: "in\u00a060\u00a0seconds.", // non-breaking spaces keep the accent on one line
     subhead:
       "We script, storyboard and animate explainer videos for software products. Send us your site and within 48 hours we'll sketch the opening 6 scenes of your video, with the script, free.",
     primaryCta: "Get a free storyboard",

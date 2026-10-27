@@ -475,6 +475,8 @@ export const defaults = {
         { label: "About", href: "/about" },
         { label: "Clients", href: "/clients" },
       ],
+      // Always shown after the CMS explore links (the CMS can't remove them).
+      pinnedLinks: [{ label: "SaaS explainers", href: "/lp/saas-explainers" }],
       stalkUsLabel: "Stalk us",
       stalkUsLinks: [
         { label: "LinkedIn", href: "https://www.linkedin.com/company/scaler-studios/" },

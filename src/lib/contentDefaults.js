@@ -28,10 +28,10 @@ export const defaults = {
         { value: "Days,\nnot weeks", label: "from brief to delivered assets" },
       ],
     },
-    works: {
-      headingBold: "Edit. Animate.",
-      headingItalic: "Perform.",
-      ctaText: "See more projects",
+    // Client strip under the About section (logos come from clients.list).
+    clients: {
+      label: "Brands we have worked with",
+      linkText: "See our work",
     },
     insights: {
       heading: "Latest insights",
@@ -225,11 +225,21 @@ export const defaults = {
       heading: "Trusted by brands that ship",
       subtext: "From a single edit to full campaign production, we help teams create more, faster, without losing the craft.",
     },
-    // Reverted to the pre-October 2026 state at Mridul's request (the six-logo
-    // grid looked off on the main site). Landing pages keep their own logo strip
-    // in src/data/landingPages.js. Add clients here or via the admin CMS.
+    // Logos live in /public/clients as transparent SVG/PNG and are drawn as
+    // single-colour silhouettes by ClientLogo (CSS mask), so any logo added
+    // here or via the admin CMS picks up the section's text colour. logoSize
+    // is a percentage nudge so wordmarks and icon lockups match in weight.
+    // Landing pages keep their own logo strip in src/data/landingPages.js.
     list: [
-      { name: "Weizmann Institute of Science", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/logos/weizmann-institute.png", category: "Education", logoSize: "160", showOnHome: true },
+      { name: "Verizon", logo: "/clients/verizon.svg", category: "Telecom", logoSize: "96", showOnHome: true },
+      { name: "Shopify", logo: "/clients/shopify.svg", category: "E-commerce", logoSize: "104", showOnHome: true },
+      { name: "Maersk", logo: "/clients/maersk.svg", category: "Logistics", logoSize: "86", showOnHome: true },
+      { name: "Subway", logo: "/clients/subway.svg", category: "Food and Retail", logoSize: "90", showOnHome: true },
+      { name: "Crocs", logo: "/clients/crocs.svg", category: "Retail", logoSize: "82", showOnHome: true },
+      { name: "Jacob and Co", logo: "/clients/jacobandco.svg", category: "Luxury", logoSize: "72", showOnHome: true },
+      { name: "Gumlet", logo: "/clients/gumlet.svg", category: "SaaS", logoSize: "98", showOnHome: true },
+      { name: "Bringg", logo: "/clients/bringg.svg", category: "SaaS", logoSize: "86", showOnHome: true },
+      { name: "SafewayTax", logo: "/clients/safewaytax.png", category: "Finance", logoSize: "84", showOnHome: true },
     ],
     cta: {
       heading: "Want to work with us?",

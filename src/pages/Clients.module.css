@@ -103,7 +103,7 @@
 
 .logoGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   border: 1px solid rgba(2, 8, 23, 0.1);
   border-radius: 1rem;
@@ -111,9 +111,10 @@
   background: rgba(2, 8, 23, 0.08);
 }
 
-@media (max-width: 968px) {
-  .logoGrid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 640px) {
+  .logoCell {
+    aspect-ratio: 1.5;
+    padding: 1rem 0.75rem;
   }
 }
 
@@ -121,7 +122,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1.8;
+  aspect-ratio: 2.2;
   background: #cefad0;
   transition: background 0.3s ease;
   padding: 1.4rem 1.8rem;
@@ -139,20 +140,22 @@
   height: 100%;
 }
 
-.logoContent svg,
-.clientLogoImg {
-  max-width: 90%;
-  max-height: 60%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: grayscale(100%) opacity(0.7);
-  mix-blend-mode: multiply;
-  transition: filter 0.4s ease, opacity 0.4s ease;
+/* Logos render as navy silhouettes (see ClientLogo); the cell sets their height. */
+.logoContent {
+  --logo-h: 30px;
+  color: #073624;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
-.logoCell:hover .clientLogoImg {
-  filter: grayscale(0) opacity(1);
+.logoCell:hover .logoContent {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .logoContent {
+    --logo-h: 22px;
+  }
 }
 
 .logoName {

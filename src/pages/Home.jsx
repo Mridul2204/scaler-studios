@@ -3,7 +3,6 @@ import Hero, { HeroTopText } from "../components/sections/Hero";
 import AboutSection from "../components/sections/About";
 import ServiceBlock, { PanelVisual } from "../components/sections/Services";
 import StackContainer from "../components/layout/StackContainer";
-import Works from "../components/sections/Works";
 import Insights from "../components/sections/Insights";
 import ClientSection from "../components/sections/ClientSection";
 import CTA from "../components/sections/CTA";
@@ -134,7 +133,6 @@ export default function Home() {
 
       <ClientSection />
       <div className="dark-section bg-[#fbf0f2]">
-        <Works />
         <div className="relative z-[60] pt-0 pb-0">
           <div className="w-full">
             <Insights />

@@ -93,17 +93,41 @@
   .header .headerCta { display: inline-flex; }
 }
 
-/* Client logos: white on dark, dark on light */
-.logo {
-  height: 28px;
-  width: auto;
-  max-width: 130px;
-  object-fit: contain;
-  opacity: 0.85;
-  filter: grayscale(100%) brightness(0) invert(1);
+/* Trust row: single-colour logos drawn by ClientLogo (CSS masks in the text
+   colour, so every brand renders in the same tone, Maersk's star included).
+   A tidy 3 x 2 grid on phones and tablets, one row from 1024px up. --logo-h
+   sets the base height; each logo's `size` nudges its visual weight. */
+.trustLogos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 1.6rem 0.75rem;
+  --logo-h: 22px;
 }
-@media (min-width: 768px) {
-  .logo { height: 34px; max-width: 160px; }
+.trustLogos li {
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+}
+@media (min-width: 640px) {
+  .trustLogos { --logo-h: 23px; gap: 1.75rem 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .trustLogos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.25rem 2rem;
+    --logo-h: 23px;
+  }
+}
+@media (min-width: 1280px) {
+  .trustLogos { --logo-h: 26px; }
 }
 
 /* Rating stars */

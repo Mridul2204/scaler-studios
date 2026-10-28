@@ -4,6 +4,7 @@ import Reveal from "./Reveal";
 import styles from "./Landing.module.css";
 import LandingShell, { scrollToForm, WhatsAppIcon } from "./LandingShell";
 import LeadForm from "./LeadForm";
+import ClientLogo from "../../components/ui/ClientLogo";
 import { getLandingPage } from "../../data/landingPages";
 import { reviews, fiverrStats } from "../../data/reviews";
 import { useSeo } from "../../lib/seo";
@@ -235,11 +236,13 @@ export default function LandingPage() {
       <section className="border-y border-white/10 px-5 md:px-8 py-8">
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
           <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-60 whitespace-nowrap">{trust.label}</p>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-5 md:justify-between flex-1">
+          <ul className={styles.trustLogos}>
             {trust.logos.map((l) => (
-              <img key={l.name} src={l.src} alt={l.name} className={styles.logo} loading="lazy" decoding="async" />
+              <li key={l.name}>
+                <ClientLogo name={l.name} logo={l.logo || l.src} size={l.size} />
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 

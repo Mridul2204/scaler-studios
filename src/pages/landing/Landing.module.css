@@ -384,13 +384,23 @@
   text-align: left;
   cursor: pointer;
 }
-.videoButton img {
+.videoButton img,
+.previewVideo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-.videoButton:hover img { transform: scale(1.03); }
+.videoButton:hover img,
+.videoButton:hover .previewVideo { transform: scale(1.03); }
+/* The preview sits behind the shade, play button and label like a thumbnail would. */
+.video .previewVideo {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: var(--night);
+  pointer-events: none;
+}
 .videoShade {
   position: absolute;
   inset: 0;

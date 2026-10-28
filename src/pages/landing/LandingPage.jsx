@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import Reveal from "./Reveal";
 import styles from "./Landing.module.css";
@@ -75,9 +75,71 @@ function CalendarIcon({ className = "" }) {
  * mp4 (ImageKit); `href` is an external player (e.g. Frame.io) opened in a
  * new tab behind a branded poster.
  */
+/**
+ * Silent looping preview for a sample card (the Apollo Studio pattern):
+ * a short, muted, audio-free clip that plays while the card is on screen
+ * and pauses when it scrolls away. Clips come straight from ImageKit's
+ * video transformations (`previewSrc` + start/duration), so no files are
+ * rendered by hand. People who asked for reduced motion or data saving
+ * get the poster frame instead.
+ */
+function previewUrls(item) {
+  if (item.previewUrl) return { video: item.previewUrl, poster: item.previewPoster || "" };
+  if (!item.previewSrc) return null;
+  const start = item.previewStart ?? 0;
+  const duration = item.previewDuration ?? 10;
+  const narrow = typeof window !== "undefined" && window.innerWidth < 640;
+  const width = narrow ? 480 : 720;
+  return {
+    video: `${item.previewSrc}?tr=so-${start},du-${duration},w-${width},ac-none,q-60`,
+    poster: `${item.previewSrc}/ik-thumbnail.jpg?tr=so-${start},w-${width}`,
+  };
+}
+
+function LoopPreview({ src, poster }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return undefined;
+    const stillOnly =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      (navigator.connection && navigator.connection.saveData);
+    if (stillOnly || typeof IntersectionObserver === "undefined") return undefined;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const p = video.play();
+          if (p && p.catch) p.catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(video);
+    return () => io.disconnect();
+  }, [src]);
+  return (
+    <video
+      ref={ref}
+      className={styles.previewVideo}
+      src={src}
+      poster={poster || undefined}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      disablePictureInPicture
+      aria-hidden="true"
+      tabIndex={-1}
+    />
+  );
+}
+
 function VideoSample({ item }) {
   const [playing, setPlaying] = useState(false);
   const title = `${item.label}: ${item.kind}`;
+  const preview = previewUrls(item);
   const meta = (
     <span className={styles.videoMeta}>
       <span>
@@ -109,7 +171,11 @@ function VideoSample({ item }) {
               setPlaying(true);
             }}
           >
-            <img src={`https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`} alt="" loading="lazy" decoding="async" />
+            {preview ? (
+              <LoopPreview src={preview.video} poster={preview.poster} />
+            ) : (
+              <img src={`https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`} alt="" loading="lazy" decoding="async" />
+            )}
             <span className={styles.videoShade} />
             <PlayIcon />
             {meta}

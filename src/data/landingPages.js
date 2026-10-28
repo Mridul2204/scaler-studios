@@ -468,6 +468,7 @@ landingPages["saas-explainers"] = {
       // move them into /public/clients and tighten the viewBoxes when convenient.
       { name: "BYD", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/images/byd_NvFHw5J8Z.svg", size: 82 },
       { name: "HP", logo: "/clients/hp.svg", size: 118 },
+      { name: "Liori Diamonds", logo: "/clients/liori.png", size: 100 },
       { name: "Ansell", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/images/ansell_4qYuldefh.svg", size: 100 },
       { name: "Thule", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/images/thule_JmNYMmnFJb.svg", size: 98 },
     ],

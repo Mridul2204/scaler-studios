@@ -431,9 +431,16 @@ landingPages["saas-explainers"] = {
     headlineAccent: "in\u00a060\u00a0seconds.", // non-breaking spaces keep the accent on one line
     subhead:
       "We script, storyboard and animate explainer videos for software products. Send us your site and within 48 hours we'll sketch the opening 6 scenes of your video, with the script, free.",
-    primaryCta: "Get a free storyboard",
-    secondaryCta: "Book a call",
-    secondaryHref: "https://calendly.com/mridulkhurana/30mins?utm_source=website&utm_campaign=lp-saas-explainers",
+    // Primary = book a call (Calendly, with the visitor's channel UTMs attached
+    // by bookingUrl); the free storyboard form stays as the no-call path.
+    primaryCta: "Book a call",
+    primaryAction: "booking",
+    secondaryCta: "Get a free storyboard",
+    secondaryAction: "form",
+    // reel: the hero shows the Work samples as an upward-drifting column of
+    // cards (posters now, silent loops once each sample has previewSrc)
+    // instead of the single showreel.
+    reel: true,
     videoUrl: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/video.mp4",
     bullets: [
       "Free storyboard in 48 hours",
@@ -442,15 +449,27 @@ landingPages["saas-explainers"] = {
     ],
   },
 
+  // Client marquee under the hero (Mridul's list, 29 Oct). `size` nudges each
+  // mark's visual weight; logos live in /public/clients.
   trust: {
-    label: "Videos delivered for",
+    label: "Some major clients we have worked with",
+    marquee: true,
     logos: [
+      { name: "SafewayTax", logo: "/clients/safewaytax.png", size: 84 },
+      { name: "Jacob and Co", logo: "/clients/jacobandco.svg", size: 72 },
+      { name: "Maersk", logo: "/clients/maersk.svg", size: 86 },
+      { name: "Crocs", logo: "/clients/crocs.svg", size: 82 },
+      { name: "Gumlet", logo: "/clients/gumlet.svg", size: 98 },
+      { name: "Subway", logo: "/clients/subway.svg", size: 90 },
       { name: "Verizon", logo: "/clients/verizon.svg", size: 96 },
       { name: "Shopify", logo: "/clients/shopify.svg", size: 104 },
-      { name: "Subway", logo: "/clients/subway.svg", size: 90 },
-      { name: "Maersk", logo: "/clients/maersk.svg", size: 86 },
-      { name: "Allianz", logo: "/scaler-img/allianz-logo.png", size: 92 },
       { name: "Bringg", logo: "/clients/bringg.svg", size: 86 },
+      // BYD, Thule and Ansell are served from ImageKit for now (uploaded 29 Oct via the admin API);
+      // move them into /public/clients and tighten the viewBoxes when convenient.
+      { name: "BYD", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/images/byd_NvFHw5J8Z.svg", size: 82 },
+      { name: "HP", logo: "/clients/hp.svg", size: 118 },
+      { name: "Ansell", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/images/ansell_4qYuldefh.svg", size: 100 },
+      { name: "Thule", logo: "https://ik.imagekit.io/zkaxtyc1u/ScalerStudios/images/thule_JmNYMmnFJb.svg", size: 98 },
     ],
   },
 

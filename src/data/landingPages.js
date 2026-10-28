@@ -40,12 +40,12 @@ export const landingPages = {
     trust: {
       label: "Creative delivered for",
       logos: [
-        { name: "Verizon", src: "/scaler-img/verizon-logo.png" },
-        { name: "Shopify", src: "/scaler-img/shopify-logo.png" },
-        { name: "Subway", src: "/scaler-img/subway-logo.png" },
-        { name: "Maersk", src: "/scaler-img/maersk-logo.png" },
-        { name: "Allianz", src: "/scaler-img/allianz-logo.png" },
-        { name: "Bringg", src: "/scaler-img/bringg.png" },
+        { name: "Verizon", logo: "/clients/verizon.svg", size: 96 },
+        { name: "Shopify", logo: "/clients/shopify.svg", size: 104 },
+        { name: "Subway", logo: "/clients/subway.svg", size: 90 },
+        { name: "Maersk", logo: "/clients/maersk.svg", size: 86 },
+        { name: "Allianz", logo: "/scaler-img/allianz-logo.png", size: 92 },
+        { name: "Bringg", logo: "/clients/bringg.svg", size: 86 },
       ],
     },
 
@@ -230,12 +230,12 @@ landingPages["video-editing"] = {
   trust: {
     label: "Edits delivered for",
     logos: [
-      { name: "Verizon", src: "/scaler-img/verizon-logo.png" },
-      { name: "Shopify", src: "/scaler-img/shopify-logo.png" },
-      { name: "Subway", src: "/scaler-img/subway-logo.png" },
-      { name: "Maersk", src: "/scaler-img/maersk-logo.png" },
-      { name: "Allianz", src: "/scaler-img/allianz-logo.png" },
-      { name: "Bringg", src: "/scaler-img/bringg.png" },
+      { name: "Verizon", logo: "/clients/verizon.svg", size: 96 },
+      { name: "Shopify", logo: "/clients/shopify.svg", size: 104 },
+      { name: "Subway", logo: "/clients/subway.svg", size: 90 },
+      { name: "Maersk", logo: "/clients/maersk.svg", size: 86 },
+      { name: "Allianz", logo: "/scaler-img/allianz-logo.png", size: 92 },
+      { name: "Bringg", logo: "/clients/bringg.svg", size: 86 },
     ],
   },
 
@@ -445,12 +445,12 @@ landingPages["saas-explainers"] = {
   trust: {
     label: "Videos delivered for",
     logos: [
-      { name: "Verizon", src: "/scaler-img/verizon-logo.png" },
-      { name: "Shopify", src: "/scaler-img/shopify-logo.png" },
-      { name: "Subway", src: "/scaler-img/subway-logo.png" },
-      { name: "Maersk", src: "/scaler-img/maersk-logo.png" },
-      { name: "Allianz", src: "/scaler-img/allianz-logo.png" },
-      { name: "Bringg", src: "/scaler-img/bringg.png" },
+      { name: "Verizon", logo: "/clients/verizon.svg", size: 96 },
+      { name: "Shopify", logo: "/clients/shopify.svg", size: 104 },
+      { name: "Subway", logo: "/clients/subway.svg", size: 90 },
+      { name: "Maersk", logo: "/clients/maersk.svg", size: 86 },
+      { name: "Allianz", logo: "/scaler-img/allianz-logo.png", size: 92 },
+      { name: "Bringg", logo: "/clients/bringg.svg", size: 86 },
     ],
   },
 

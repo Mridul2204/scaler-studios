@@ -472,6 +472,201 @@
   border-radius: 9999px;
 }
 
+/* ── Hero backdrop: night base, soft emerald glow behind the reel, a faint
+   dot grid that fades out towards the edges and one thin light streak. ── */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(55% 60% at 78% 42%, rgba(29, 191, 115, 0.26), transparent 70%),
+    radial-gradient(45% 45% at 10% 90%, rgba(206, 250, 208, 0.07), transparent 70%),
+    linear-gradient(180deg, var(--night) 0%, var(--navy) 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.11) 1px, transparent 1.3px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(75% 80% at 55% 45%, #000 20%, transparent 100%);
+  mask-image: radial-gradient(75% 80% at 55% 45%, #000 20%, transparent 100%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 38%;
+  top: 72%;
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(29, 191, 115, 0.5) 35%, rgba(206, 250, 208, 0.85) 55%, transparent 100%);
+  transform: rotate(-17deg);
+  transform-origin: left center;
+  box-shadow: 0 0 26px rgba(29, 191, 115, 0.4);
+  pointer-events: none;
+}
+@media (max-width: 1023px) {
+  .hero::after { display: none; }
+}
+/* Accent words in the headline: mint to emerald, like a lit edge. */
+.accentGrad {
+  background: linear-gradient(92deg, #e2ffe6 0%, var(--mint) 35%, var(--emerald) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Hero reel: an upward-drifting column of sample cards ── */
+.reel {
+  position: relative;
+  height: min(72vh, 600px);
+  max-width: 480px;
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+.reelTrack {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 10px;
+  animation: reelScroll calc(var(--count, 4) * 7s) linear infinite;
+  will-change: transform;
+}
+.reel:hover .reelTrack,
+.reel:focus-within .reelTrack {
+  animation-play-state: paused;
+}
+@keyframes reelScroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+.reelCard {
+  --focus: 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, calc(0.1 + var(--focus) * 0.35));
+  background: var(--night);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  flex: none;
+  margin-bottom: 18px; /* spacing lives on the card so each half of the track is the same height */
+  transform: scale(calc(0.9 + var(--focus) * 0.1));
+  opacity: calc(0.45 + var(--focus) * 0.55);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, calc(0.15 + var(--focus) * 0.35)), 0 0 0 calc(var(--focus) * 6px) rgba(29, 191, 115, calc(var(--focus) * 0.14));
+  transition: border-color 0.2s linear;
+}
+.reelCard img,
+.reelCard video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+  pointer-events: none;
+}
+.reelShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 54, 36, 0) 50%, rgba(7, 54, 36, 0.85) 100%);
+}
+.reelMeta {
+  position: absolute;
+  left: 16px;
+  right: 72px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.reelName { font-weight: 700; font-size: 1.05rem; line-height: 1.1; }
+.reelKind { font-size: 0.8rem; opacity: 0.8; }
+.reelDuration {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(7, 54, 36, 0.85);
+  padding: 0.3rem 0.6rem;
+  border-radius: 9999px;
+}
+@media (max-width: 1023px) {
+  .reel { height: 300px; max-width: 520px; }
+  .reelCard { border-radius: 14px; margin-bottom: 12px; }
+}
+
+/* ── Client marquee ── */
+.marqueeWrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.marqueeLabel {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin: 0 0 1.5rem;
+}
+.marquee {
+  overflow: hidden;
+  --logo-h: 24px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+.marqueeTrack {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee calc(var(--count, 12) * 3.2s) linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marqueeTrack { animation-play-state: paused; }
+/* Spacing sits inside each item (no gap) so both halves of the track measure
+   the same and the -50% loop point is invisible. */
+.marqueeTrack li {
+  flex: none;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+  padding: 0 clamp(1.25rem, 2.6vw, 2.4rem);
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (min-width: 768px) {
+  .marquee { --logo-h: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 1.5rem;
+  }
+  .marqueeTrack li[aria-hidden="true"] { display: none; }
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .reelTrack { animation: none; }
+}
+
 /* Hero arrival: a gentle fade-up on first load, staggered per line via --d.
    The hidden state lives inside the keyframes, so when animations are off
    (reduced motion) everything is simply visible. */

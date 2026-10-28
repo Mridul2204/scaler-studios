@@ -24,6 +24,7 @@ export function WhatsAppIcon({ className = "w-5 h-5" }) {
 export default function LandingShell({
   children,
   ctaLabel = "Get a free creative review",
+  ctaHref, // when set (a booking link), the header and sticky CTAs open it instead of scrolling to the form
   showStickyBar = true,
   waMessage = "Hi Mridul, I came from your ad creative page and want to talk about creative for our ads.",
   emailSubject = "Ad creative enquiry",
@@ -49,9 +50,21 @@ export default function LandingShell({
               <WhatsAppIcon className="w-4 h-4" />
               <span className="hidden sm:inline">WhatsApp</span>
             </a>
-            <button type="button" className={`${styles.btnPrimary} ${styles.headerBtn} ${styles.headerCta}`} onClick={() => scrollToForm("header")}>
-              {ctaLabel}
-            </button>
+            {ctaHref ? (
+              <a
+                href={ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${styles.btnPrimary} ${styles.headerBtn} ${styles.headerCta}`}
+                onClick={() => trackEvent("booking_click", { placement: "header" })}
+              >
+                {ctaLabel}
+              </a>
+            ) : (
+              <button type="button" className={`${styles.btnPrimary} ${styles.headerBtn} ${styles.headerCta}`} onClick={() => scrollToForm("header")}>
+                {ctaLabel}
+              </button>
+            )}
           </div>
         </div>
       </header>
@@ -82,9 +95,21 @@ export default function LandingShell({
 
       {showStickyBar && (
         <div className={styles.stickyBar}>
-          <button type="button" className={`${styles.btnPrimary} flex-1`} onClick={() => scrollToForm("sticky")}>
-            {ctaLabel}
-          </button>
+          {ctaHref ? (
+            <a
+              href={ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.btnPrimary} flex-1`}
+              onClick={() => trackEvent("booking_click", { placement: "sticky" })}
+            >
+              {ctaLabel}
+            </a>
+          ) : (
+            <button type="button" className={`${styles.btnPrimary} flex-1`} onClick={() => scrollToForm("sticky")}>
+              {ctaLabel}
+            </button>
+          )}
           <a
             href={waHref}
             target="_blank"

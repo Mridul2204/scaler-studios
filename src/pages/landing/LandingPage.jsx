@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import Reveal from "./Reveal";
+import HeroReel from "./HeroReel";
+import LogoMarquee from "./LogoMarquee";
+import { bookingUrl } from "../../lib/booking";
 import styles from "./Landing.module.css";
 import LandingShell, { scrollToForm, WhatsAppIcon } from "./LandingShell";
 import LeadForm from "./LeadForm";
@@ -246,28 +249,51 @@ export default function LandingPage() {
   const { hero, trust, work, problem, deliverables, packages, process, proof, samples, upsell, faq, form } = page;
 
   return (
-    <LandingShell ctaLabel={hero.primaryCta} waMessage={page.whatsappMessage} emailSubject={page.emailSubject}>
+    <LandingShell
+      ctaLabel={hero.primaryCta}
+      ctaHref={hero.primaryAction === "booking" && page.booking?.url ? bookingUrl(page.booking.url) : undefined}
+      waMessage={page.whatsappMessage}
+      emailSubject={page.emailSubject}
+    >
       {/* ── Hero ── */}
-      <section className="px-5 md:px-8 pt-12 md:pt-20 pb-14 md:pb-24">
+      <section className={`${styles.hero} px-5 md:px-8 pt-12 md:pt-20 pb-14 md:pb-24`}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <div className="lg:col-span-6 xl:col-span-5">
             <p className={`${styles.heroIn} text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#1DBF73] mb-5`} style={{ "--d": "0.05s" }}>{hero.eyebrow}</p>
             <h1 className={`${styles.heroIn} text-[2.4rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[3.4rem] xl:text-[3.8rem] font-bold tracking-tight`} style={{ "--d": "0.12s" }}>
-              {hero.headline} <span className={`${styles.serif} text-[#1DBF73]`}>{hero.headlineAccent}</span>
+              {hero.headline} <span className={`${styles.serif} ${styles.accentGrad}`}>{hero.headlineAccent}</span>
             </h1>
             <p className={`${styles.heroIn} mt-6 text-lg md:text-xl leading-relaxed opacity-85 max-w-[58ch]`} style={{ "--d": "0.2s" }}>{hero.subhead}</p>
             <div className={`${styles.heroIn} mt-8 flex flex-col sm:flex-row gap-3 sm:items-center`} style={{ "--d": "0.28s" }}>
-              <button type="button" className={`${styles.btnPrimary} text-lg py-5 px-8`} onClick={() => scrollToForm("hero")}>
-                {hero.primaryCta}
-              </button>
-              <a
-                href={hero.secondaryHref || "#packages"}
-                className={styles.btnGhost}
-                {...(/^https?:/.test(hero.secondaryHref || "") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                onClick={() => trackEvent(/^https?:/.test(hero.secondaryHref || "") ? "booking_click" : "cta_click", { placement: "hero-secondary" })}
-              >
-                {hero.secondaryCta}
-              </a>
+              {hero.primaryAction === "booking" && page.booking?.url ? (
+                <a
+                  href={bookingUrl(page.booking.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.btnPrimary} text-lg py-5 px-8`}
+                  onClick={() => trackEvent("booking_click", { placement: "hero" })}
+                >
+                  {hero.primaryCta}
+                </a>
+              ) : (
+                <button type="button" className={`${styles.btnPrimary} text-lg py-5 px-8`} onClick={() => scrollToForm("hero")}>
+                  {hero.primaryCta}
+                </button>
+              )}
+              {hero.secondaryAction === "form" ? (
+                <button type="button" className={styles.btnGhost} onClick={() => scrollToForm("hero-secondary")}>
+                  {hero.secondaryCta}
+                </button>
+              ) : (
+                <a
+                  href={hero.secondaryHref || "#packages"}
+                  className={styles.btnGhost}
+                  {...(/^https?:/.test(hero.secondaryHref || "") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  onClick={() => trackEvent(/^https?:/.test(hero.secondaryHref || "") ? "booking_click" : "cta_click", { placement: "hero-secondary" })}
+                >
+                  {hero.secondaryCta}
+                </a>
+              )}
             </div>
             <ul className={`${styles.heroIn} mt-7 flex flex-col sm:flex-row sm:flex-wrap gap-x-6 gap-y-2 text-sm opacity-80`} style={{ "--d": "0.36s" }}>
               {hero.bullets.map((b) => (
@@ -281,6 +307,15 @@ export default function LandingPage() {
             </div>
           </div>
           <div className={`${styles.heroIn} lg:col-span-6 xl:col-span-7`} style={{ "--d": "0.18s" }}>
+            {hero.reel && work?.items?.length ? (
+              <HeroReel
+                items={work.items}
+                onPick={() => {
+                  const el = document.getElementById("work");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+              />
+            ) : (
             <div className="relative rounded-[24px] overflow-hidden aspect-video bg-[#0A2629] shadow-2xl shadow-black/30">
               <video
                 src={hero.videoUrl}
@@ -294,11 +329,17 @@ export default function LandingPage() {
               />
               <div className="absolute bottom-4 left-4 bg-[#073624]/85 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">Showreel</div>
             </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* ── Trust logos ── */}
+      {trust.marquee || trust.logos.length >= 10 ? (
+        <section className="border-y border-white/10 px-5 md:px-8 py-9 md:py-11">
+          <LogoMarquee logos={trust.logos} label={trust.label} />
+        </section>
+      ) : (
       <section className="border-y border-white/10 px-5 md:px-8 py-8">
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
           <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-60 whitespace-nowrap">{trust.label}</p>
@@ -311,6 +352,7 @@ export default function LandingPage() {
           </ul>
         </div>
       </section>
+      )}
 
       {/* ── Work: playable samples (optional) ── */}
       {work && (
